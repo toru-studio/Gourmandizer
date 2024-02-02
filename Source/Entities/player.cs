@@ -3,52 +3,51 @@ using System;
 
 public partial class player : CharacterBody2D
 {
-    public float moveSpeedMax = 150.0f;
-    public float moveAcceleration = 20.0f;
-    public float jumpVelocity = 400.0f;
-    public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-
+    public float MoveSpeedMax = 500.0f;
+    public float MoveAcceleration = 20.0f;
+    public float JumpVelocity = 300.0f;
+    public float Friction = 10f;
+    public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+    public const float DefaultWeight = 25.0f;
+    public float CurrentWeight;
 
     public override void _PhysicsProcess(double delta)
     {
-        Vector2 velocityY = Velocity;
-        Vector2 velocityX = Velocity;
+        var velocity = Velocity;
         
-        // Gravity.
+        MoveSpeedMax = 500 - (DefaultWeight * 2); // Change with CurrentWeight
+
+
+        // Handle jump
+        if (Input.IsKeyPressed(Key.Space) && IsOnFloor())
+        {
+            velocity.Y = -JumpVelocity;
+        }
+        // Apply gravity
         if (!IsOnFloor())
         {
-            velocityY.Y += gravity * (float)delta;
+            velocity.Y += (Gravity + DefaultWeight) * (float)delta;
         }
-
-        velocityX.X = 0;
-        velocityX.Y = 0;
-
-        if (IsOnFloor())
+        // orizontal movement
+        else if (Input.IsKeyPressed(Key.Left))
         {
-            //Left Right Movement
-            if (Input.IsKeyPressed(Key.A))
-            {
-                if (velocityX.X < moveSpeedMax)
-                {
-                    velocityX.X += -moveAcceleration;
-                }
-            }
-            else if (Input.IsKeyPressed(Key.D))
-            {
-                if (velocityX.X > -moveSpeedMax)
-                {
-                    velocityX.X += moveAcceleration;
-                }
-            }
+            velocity.X -= MoveAcceleration;
+        }
+        else if (Input.IsKeyPressed(Key.Right))
+        {
+            velocity.X += MoveAcceleration;
+        }
+        else
+        {
+            //Friction
+            velocity.X = Mathf.Lerp(velocity.X, 0, (Friction) * (float)delta);
 
-            // Jump.
-            if ((Input.IsKeyPressed(Key.Space) || Input.IsKeyPressed(Key.W)) && IsOnFloor())
-                velocityY.Y = -jumpVelocity;
         }
 
-        // Handle Velocity
-        Velocity = velocityY;
-        Velocity += velocityX; // Change += to = if we want air movement
+        // Limit horizontal speed
+        velocity.X = Mathf.Clamp(velocity.X, -MoveSpeedMax, MoveSpeedMax);
+
+        Velocity = velocity;
         MoveAndSlide();
     }
 }
