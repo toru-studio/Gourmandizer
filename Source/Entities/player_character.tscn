@@ -1,20 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://gfx2wkt3si88"]
+[gd_scene load_steps=4 format=3 uid="uid://gfx2wkt3si88"]
 
 [ext_resource type="Texture2D" uid="uid://cxrwivjiyk616" path="res://Assets/Images/Placeholder/Character.png" id="1_7wwsu"]
+[ext_resource type="Script" path="res://Source/Entities/player.cs" id="1_h5ae2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tm680"]
+radius = 16.0
+height = 60.0
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
+collision_layer = 2
+script = ExtResource("1_h5ae2")
 
 [node name="Character" type="Sprite2D" parent="."]
 position = Vector2(-10, 2)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_7wwsu")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-position = Vector2(-30, -28)
-scale = Vector2(0.5, 0.5)
-polygon = PackedVector2Array(1, 41, 39, 42, 40, 16, 56, 0, 66, 2, 75, 14, 83, 41, 83, 81, 75, 112, 64, 119, 48, 116, 40, 88, 39, 77)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tm680")
