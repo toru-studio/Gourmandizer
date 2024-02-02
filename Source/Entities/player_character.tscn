@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://gfx2wkt3si88"]
+
+[ext_resource type="Texture2D" uid="uid://cxrwivjiyk616" path="res://Assets/Images/Placeholder/Character.png" id="1_7wwsu"]
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(42, 61)
+texture = ExtResource("1_7wwsu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1, 41, 39, 42, 47, 15, 56, 2, 66, 2, 75, 14, 83, 41, 83, 81, 75, 112, 64, 119, 54, 118, 41, 88, 39, 77)
