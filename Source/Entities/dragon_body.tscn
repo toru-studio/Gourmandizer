@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://j2y552wct7ai"]
 
 [ext_resource type="Script" path="res://Source/Entities/DragonBody.cs" id="1_2hy77"]
+[ext_resource type="Shader" path="res://Source/Shaders/dragon_body_colour.gdshader" id="2_5g6kc"]
 [ext_resource type="Texture2D" uid="uid://btm04p2uq8btt" path="res://Assets/Images/Dragon/20240203_125200.jpg" id="2_hdhve"]
-[ext_resource type="Shader" path="res://Source/Shaders/dragon_body.gdshader" id="2_s38fj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0570r"]
-shader = ExtResource("2_s38fj")
+shader = ExtResource("2_5g6kc")
 shader_parameter/motion = Vector2(20, 20)
-shader_parameter/scale = 1.0
+shader_parameter/scale = 0.3
 shader_parameter/offset = Vector2(0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ho18k"]

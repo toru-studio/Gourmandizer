@@ -1,26 +1,90 @@
-[gd_scene load_steps=5 format=3 uid="uid://fnq5y6bvyalx"]
+[gd_scene load_steps=15 format=3 uid="uid://fnq5y6bvyalx"]
 
 [ext_resource type="Shader" path="res://Source/Shaders/dragon_body.gdshader" id="1_wrp5n"]
+[ext_resource type="Texture2D" uid="uid://by2ks0gldw8ay" path="res://Assets/Images/Dragon/Sausage.jpg" id="2_7ecbv"]
 [ext_resource type="Texture2D" uid="uid://btm04p2uq8btt" path="res://Assets/Images/Dragon/20240203_125200.jpg" id="2_ami7m"]
+[ext_resource type="Shader" path="res://Source/Shaders/dragon_eye.gdshader" id="3_ijdk8"]
+[ext_resource type="Texture2D" uid="uid://dr0m408q7mkph" path="res://Assets/Images/Dragon/Eye.jpg" id="4_2htxl"]
+[ext_resource type="Texture2D" uid="uid://cerpqck5ckgw4" path="res://Assets/Images/Dragon/Paper.jpg" id="4_avcgt"]
+[ext_resource type="Shader" path="res://Source/Shaders/dragon_body_colour.gdshader" id="5_82oy1"]
+[ext_resource type="Shader" path="res://Source/Shaders/dragon_eye_colour.gdshader" id="7_dhdnw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8fpvl"]
+shader = ExtResource("1_wrp5n")
+shader_parameter/motion = Vector2(4, 1)
+shader_parameter/scale = 0.03
+shader_parameter/offset = Vector2(0.1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mj1p"]
+shader = ExtResource("3_ijdk8")
+shader_parameter/motion = Vector2(1, 1)
+shader_parameter/scale = 0.025
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/offset_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wivqj"]
+shader = ExtResource("3_ijdk8")
+shader_parameter/motion = Vector2(1, 1)
+shader_parameter/scale = 0.025
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/offset_scale = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_74kbb"]
-shader = ExtResource("1_wrp5n")
+shader = ExtResource("5_82oy1")
 shader_parameter/motion = Vector2(20, 20)
-shader_parameter/scale = 1.0
+shader_parameter/scale = 0.3
 shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvsd3"]
+shader = ExtResource("7_dhdnw")
+shader_parameter/motion = Vector2(3, 0)
+shader_parameter/scale = 0.025
+shader_parameter/offset = Vector2(25, 18)
+shader_parameter/offset_scale = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tese"]
 
 [node name="DragonHead" type="Node2D"]
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-texture_repeat = 2
-material = SubResource("ShaderMaterial_74kbb")
-position = Vector2(-1414, -428)
-texture = ExtResource("2_ami7m")
-polygon = PackedVector2Array(1385, 434, 1375, 434, 1366, 440, 1359, 436, 1359, 427, 1366, 422, 1375, 420, 1388, 415, 1393, 406, 1387, 400, 1391, 396, 1400, 394, 1413, 393, 1430, 373, 1437, 372, 1439, 376, 1430, 382, 1424, 393, 1431, 386, 1437, 383, 1441, 386, 1437, 389, 1428, 395, 1443, 397, 1456, 405, 1430, 466, 1419, 468, 1407, 465, 1397, 458, 1381, 459, 1366, 458, 1359, 456, 1360, 449, 1374, 447, 1394, 446, 1405, 445, 1416, 443, 1409, 440, 1402, 439, 1397, 438)
+scale = Vector2(0.5, 0.5)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="Polygon2D3" type="Polygon2D" parent="RigidBody2D"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_8fpvl")
+texture = ExtResource("2_7ecbv")
+polygon = PackedVector2Array(-66, 5, -60, 8, -44, 10, -39, 11, -38, 16, -46, 16, -51, 19, -60, 23, -61, 26, 5, 21, 6, 3)
+
+[node name="Polygon2D4" type="Polygon2D" parent="RigidBody2D"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_0mj1p")
+texture = ExtResource("4_avcgt")
+polygon = PackedVector2Array(-63, 6, -61, 8, -60, 6, -58, 8, -56, 6, -54, 8, -52, 6, -50, 8, -48, 6, -46, 8, -44, 5, -42, 8, -39, 4, -36, 8, -33, 4, -30, 8, -25, 5, -25, 9, -20, 7, -21, 11, -16, 8, -16, 12, -10, 9, -11, 13, -7, 10, -7, 13, -4, 10, -3, 13, 0, 12, -11, 3, -59, 1)
+
+[node name="Polygon2D5" type="Polygon2D" parent="RigidBody2D"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_wivqj")
+texture = ExtResource("4_avcgt")
+polygon = PackedVector2Array(-62, 26, -61, 24, -59, 25, -58, 22, -55, 23, -52, 20, -51, 22, -49, 20, -48, 22, -47, 20, -46, 22, -45, 20, -44, 22, -43, 20, -41, 22, -40, 19, -37, 22, -34, 19, -32, 21, -30, 18, -27, 21, -26, 18, -24, 21, -23, 18, -21, 21, -49, 25)
+
+[node name="Polygon2D" type="Polygon2D" parent="RigidBody2D"]
+texture_filter = 2
+texture_repeat = 2
+material = SubResource("ShaderMaterial_74kbb")
+position = Vector2(-1413, -429)
+texture = ExtResource("2_ami7m")
+polygon = PackedVector2Array(1385, 434, 1375, 434, 1366, 435, 1351, 435, 1341, 439, 1344, 427, 1347, 418, 1355, 409, 1357, 418, 1363, 416, 1370, 412, 1379, 406, 1381, 403, 1389, 400, 1394, 397, 1405, 396, 1416, 395, 1431, 379, 1457, 389, 1461, 394, 1430, 385, 1427, 395, 1434, 386, 1470, 387, 1464, 390, 1437, 389, 1433, 396, 1443, 397, 1456, 405, 1430, 466, 1419, 468, 1407, 465, 1397, 458, 1381, 459, 1366, 458, 1351, 455, 1359, 451, 1375, 450, 1396, 448, 1405, 445, 1416, 443, 1409, 440, 1402, 439, 1397, 438)
+
+[node name="Polygon2D2" type="Polygon2D" parent="RigidBody2D"]
+texture_filter = 2
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pvsd3")
+position = Vector2(7, 0)
+antialiased = true
+texture = ExtResource("4_2htxl")
+texture_scale = Vector2(0.001, 0.001)
+polygon = PackedVector2Array(-33, -27, -38, -24, -41, -19, -38, -13, -32, -11, -19, -11, -13, -15, -12, -19, -16, -25, -19, -27, -26, -28)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 scale = Vector2(4, 4)
