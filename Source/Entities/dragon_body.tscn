@@ -1,0 +1,293 @@
+[gd_scene load_steps=5 format=3 uid="uid://j2y552wct7ai"]
+
+[ext_resource type="Script" path="res://Source/Entities/DragonBody.cs" id="1_2hy77"]
+[ext_resource type="Texture2D" uid="uid://bpe76no7n0tfh" path="res://Assets/Images/Placeholder/DragonBody.png" id="2_4p4o4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ho18k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c6nm1"]
+
+[node name="DragonBody" type="Node2D"]
+script = ExtResource("1_2hy77")
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="6" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(0, -13.4)
+rest = Transform2D(1, 0, 0, 1, 0, -13.4)
+
+[node name="0" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(0, -0.400002)
+rotation = -1.5708
+rest = Transform2D(-3.61999e-06, -1, 1, -3.61999e-06, 0, -0.400002)
+
+[node name="1" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(21, -13.4)
+rotation = 1.57079
+rest = Transform2D(2.22127e-06, 1, -1, 2.22127e-06, 21, -13.4)
+
+[node name="2" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(20, 15.6)
+rotation = 0.785397
+rest = Transform2D(0.707107, 0.707106, -0.707106, 0.707107, 20, 15.6)
+
+[node name="3" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(-1.90735e-06, 16.6)
+rotation = 2.87979
+scale = Vector2(1, 1)
+rest = Transform2D(-0.965925, 0.258823, -0.258823, -0.965925, -1.90735e-06, 16.6)
+
+[node name="4" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(-21, 15.6)
+rotation = 1.8326
+rest = Transform2D(-0.258825, 0.965924, -0.965924, -0.258825, -21, 15.6)
+
+[node name="5" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(-20, -13.4)
+rotation = -2.618
+rest = Transform2D(-0.866028, -0.499995, 0.499995, -0.866028, -20, -13.4)
+
+[node name="Sprite2D" type="Polygon2D" parent="."]
+texture = ExtResource("2_4p4o4")
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(29, -26.6, 29, -24.8, 32, -21.8, 32, -2.4, 29.9, 26, 25.3, 26, 18.4, 29, 16, 29, -31, 27, -31, 24.5, -32, 22.9, -32, -12.4, -30.8, -25, -27.5, -25, -21.5, -28, -3.1, -28, 10, -28.9, 10, -30.4, -1.66399, 0.723007)
+uv = PackedVector2Array(61, 5.4, 61, 7.2, 64, 10.2, 64, 29.6, 61.9, 58, 57.3, 58, 50.4, 61, 48, 61, 1, 59, 1, 56.5, 0, 54.9, 0, 19.6, 1.2, 7, 4.5, 7, 10.5, 4, 28.9, 4, 42, 3.1, 42, 1.6, -1.66399, 0.723007)
+polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17)]
+bones = ["6", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0), "0", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1), "1", PackedFloat32Array(1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "2", PackedFloat32Array(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0), "4", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0), "5", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)]
+internal_vertex_count = 1
+
+[node name="RigidBody2D1" type="RigidBody2D" parent="."]
+position = Vector2(21, -13)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D1"]
+position = Vector2(-1, -0.400002)
+shape = SubResource("CircleShape2D_ho18k")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D1"]
+rotation = 1.03891
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D0")
+bias = 0.9
+disable_collision = false
+length = 25.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D1"]
+rotation = 1.54783
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D6")
+bias = 0.9
+disable_collision = false
+length = 21.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D1"]
+rotation = 0.0597589
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D2")
+bias = 0.9
+disable_collision = false
+length = 29.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="."]
+position = Vector2(-19, -13)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5"]
+position = Vector2(-1.5, -1)
+shape = SubResource("CircleShape2D_c6nm1")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D5"]
+rotation = -1.02669
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D0")
+bias = 0.9
+disable_collision = false
+length = 22.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D5"]
+rotation = -1.55783
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D6")
+bias = 0.9
+disable_collision = false
+length = 20.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D5"]
+rotation = 0.108141
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D4")
+bias = 0.9
+disable_collision = false
+length = 27.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(20, 17)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(-1.5, -1)
+shape = SubResource("CircleShape2D_ho18k")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D2"]
+rotation = 2.23901
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D0")
+bias = 0.9
+disable_collision = false
+length = 26.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D2"]
+rotation = 3.12527
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D1")
+bias = 0.9
+disable_collision = false
+length = 31.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D2"]
+rotation = 1.57082
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D3")
+bias = 0.9
+disable_collision = false
+length = 20.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+position = Vector2(-20, 16)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
+position = Vector2(-1.5, -1)
+shape = SubResource("CircleShape2D_ho18k")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D4"]
+rotation = -2.24845
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D0")
+bias = 0.9
+disable_collision = false
+length = 26.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D4"]
+rotation = -3.11415
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D5")
+bias = 0.9
+disable_collision = false
+length = 29.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D4"]
+rotation = -1.56382
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D3")
+bias = 0.9
+disable_collision = false
+length = 20.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="RigidBody2D6" type="RigidBody2D" parent="."]
+position = Vector2(0, -13)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D6"]
+position = Vector2(-1.5, -1)
+shape = SubResource("CircleShape2D_ho18k")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D6"]
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D0")
+bias = 0.9
+disable_collision = false
+length = 12.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D6"]
+rotation = 1.60718
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D5")
+bias = 0.9
+disable_collision = false
+length = 21.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D6"]
+rotation = 4.58622
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D1")
+bias = 0.9
+disable_collision = false
+length = 21.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2(0, 15)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+position = Vector2(-1.5, -1)
+shape = SubResource("CircleShape2D_ho18k")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D3"]
+rotation = 3.09565
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D0")
+bias = 0.9
+disable_collision = false
+length = 17.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D3"]
+rotation = 1.63601
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D4")
+bias = 0.9
+disable_collision = false
+length = 22.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D3"]
+rotation = 4.66271
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody2D2")
+bias = 0.9
+disable_collision = false
+length = 19.0
+stiffness = 16.0
+damping = 5.0
+
+[node name="RigidBody2D0" type="RigidBody2D" parent="."]
+position = Vector2(-4.57764e-05, -7.62939e-06)
+rotation = -0.0024297
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D0"]
+position = Vector2(-1.5, -1)
+shape = SubResource("CircleShape2D_ho18k")
