@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bapg5y7gwyuvr"]
+
+[ext_resource type="Texture2D" uid="uid://j8oo6e66343i" path="res://Assets/Images/Placeholder/Treasure.png" id="1_flkci"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_23ks1"]
+radius = 4.12311
+
+[node name="Treasure" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_23ks1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_flkci")
