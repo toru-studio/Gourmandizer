@@ -22,3 +22,9 @@ zoom = Vector2(5, 5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_tm680")
+
+[node name="Pickup" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_tm680")

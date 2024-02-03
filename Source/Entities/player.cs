@@ -60,7 +60,7 @@ public partial class player : CharacterBody2D
 	}
 
 	private void _on_food_body_entered(Node2D body)
-	{
+	{		
 		if (body.Name != "PlayerCharacter") return;
 		CurrentWeight += 1;
 		FoodItems += 1;
