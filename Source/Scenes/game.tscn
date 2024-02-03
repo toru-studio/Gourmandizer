@@ -1,11 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv2i4q7fn6hv5"]
+[gd_scene load_steps=5 format=3 uid="uid://cv2i4q7fn6hv5"]
 
 [ext_resource type="PackedScene" uid="uid://gfx2wkt3si88" path="res://Source/Entities/player_character.tscn" id="1_63ya0"]
 [ext_resource type="PackedScene" uid="uid://dacum8ak8y6ut" path="res://Source/Maps/map.tscn" id="1_twuys"]
+[ext_resource type="PackedScene" uid="uid://byo2uyqjd05b0" path="res://Source/Item/Food.tscn" id="3_eqokd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24llh"]
+size = Vector2(158.75, 95.25)
 
 [node name="Game" type="Node"]
 
 [node name="Map" parent="." instance=ExtResource("1_twuys")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_63ya0")]
-position = Vector2(45, 700)
+position = Vector2(243, 684)
+
+[node name="OfferingArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OfferingArea"]
+position = Vector2(78.625, 687.625)
+shape = SubResource("RectangleShape2D_24llh")
+
+[node name="FoodItems" type="Node2D" parent="."]
+
+[node name="Food" parent="FoodItems" instance=ExtResource("3_eqokd")]
+position = Vector2(272, 662)
+
+[node name="Food2" parent="FoodItems" instance=ExtResource("3_eqokd")]
+position = Vector2(250, 663)
+
+[node name="Food3" parent="FoodItems" instance=ExtResource("3_eqokd")]
+position = Vector2(167, 720)
+
+[node name="Food4" parent="FoodItems" instance=ExtResource("3_eqokd")]
+position = Vector2(201, 724)
+
+[connection signal="body_entered" from="OfferingArea" to="PlayerCharacter" method="_on_offering_area_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food" to="PlayerCharacter" method="_on_food_body_entered"]

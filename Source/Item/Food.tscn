@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://byo2uyqjd05b0"]
+
+[ext_resource type="Texture2D" uid="uid://j8oo6e66343i" path="res://Assets/Images/Placeholder/Treasure.png" id="1_flkci"]
+[ext_resource type="Script" path="res://Source/Item/Food.cs" id="1_okqxo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xij6b"]
+radius = 4.0
+
+[node name="Food" type="Area2D"]
+script = ExtResource("1_okqxo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_flkci")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xij6b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
