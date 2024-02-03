@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://gfx2wkt3si88"]
+[gd_scene load_steps=2 format=3 uid="uid://b74fqfnjgutr6"]
 
-[ext_resource type="Texture2D" uid="uid://cxrwivjiyk616" path="res://Assets/Images/Placeholder/Character.png" id="1_7wwsu"]
+[ext_resource type="Texture2D" uid="uid://bust3maokfvnl" path="res://Assets/Images/Placeholder/Character.png" id="1_7wwsu"]
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
