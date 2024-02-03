@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv2i4q7fn6hv5"]
+[gd_scene load_steps=4 format=3 uid="uid://cv2i4q7fn6hv5"]
 
 [ext_resource type="PackedScene" uid="uid://gfx2wkt3si88" path="res://Source/Entities/player_character.tscn" id="1_63ya0"]
 [ext_resource type="PackedScene" uid="uid://dacum8ak8y6ut" path="res://Source/Maps/map.tscn" id="1_twuys"]
+[ext_resource type="PackedScene" uid="uid://bapg5y7gwyuvr" path="res://Source/Item/Treasure.tscn" id="3_eqokd"]
 
 [node name="Game" type="Node"]
 
 [node name="Map" parent="." instance=ExtResource("1_twuys")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_63ya0")]
-position = Vector2(69, 711)
+position = Vector2(68, 716)
+
+[node name="Treasure" parent="." instance=ExtResource("3_eqokd")]
+position = Vector2(14, 731)
