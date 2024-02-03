@@ -2,14 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://gfx2wkt3si88" path="res://Source/Entities/player_character.tscn" id="1_63ya0"]
 [ext_resource type="PackedScene" uid="uid://dacum8ak8y6ut" path="res://Source/Maps/map.tscn" id="1_twuys"]
-[ext_resource type="PackedScene" uid="uid://bapg5y7gwyuvr" path="res://Source/Item/Treasure.tscn" id="3_eqokd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24llh"]
+size = Vector2(158.75, 95.25)
 
 [node name="Game" type="Node"]
 
 [node name="Map" parent="." instance=ExtResource("1_twuys")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_63ya0")]
-position = Vector2(68, 716)
+position = Vector2(243, 684)
 
-[node name="Treasure" parent="." instance=ExtResource("3_eqokd")]
-position = Vector2(14, 731)
+[node name="OfferingArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OfferingArea"]
+position = Vector2(78.625, 687.625)
+shape = SubResource("RectangleShape2D_24llh")
+
+[connection signal="body_entered" from="OfferingArea" to="PlayerCharacter" method="_on_offering_area_body_entered"]
