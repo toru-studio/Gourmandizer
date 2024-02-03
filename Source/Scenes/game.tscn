@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv2i4q7fn6hv5"]
+[gd_scene load_steps=4 format=3 uid="uid://dbf0bqhyeocbv"]
 
-[ext_resource type="PackedScene" uid="uid://gfx2wkt3si88" path="res://Source/Entities/player_character.tscn" id="1_63ya0"]
-[ext_resource type="PackedScene" uid="uid://dacum8ak8y6ut" path="res://Source/Maps/map.tscn" id="1_twuys"]
+[ext_resource type="PackedScene" uid="uid://b74fqfnjgutr6" path="res://Source/Entities/player_character.tscn" id="1_63ya0"]
+[ext_resource type="PackedScene" uid="uid://bk4u22qm3viy4" path="res://Source/Maps/map.tscn" id="1_twuys"]
+[ext_resource type="PackedScene" uid="uid://dw14morlkyag4" path="res://Source/Entities/dragon.tscn" id="3_tv4qa"]
 
 [node name="Game" type="Node"]
 
@@ -9,3 +10,6 @@
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_63ya0")]
 position = Vector2(45, 700)
+
+[node name="Dragon" parent="." instance=ExtResource("3_tv4qa")]
+position = Vector2(18, 15)

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmymkpd708grm"]
+
+[ext_resource type="Shader" path="res://Source/Shaders/dragon_body_colour.gdshader" id="1_v5f43"]
+[ext_resource type="Texture2D" uid="uid://btm04p2uq8btt" path="res://Assets/Images/Dragon/20240203_125200.jpg" id="2_67ly3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjtyj"]
+size = Vector2(41.5429, 88)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxobx"]
+shader = ExtResource("1_v5f43")
+shader_parameter/motion = Vector2(20, 20)
+shader_parameter/scale = 0.3
+shader_parameter/offset = Vector2(0, 0)
+
+[node name="DragonNeck" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-0.0424676, 4.02452)
+rotation = -0.523599
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_fjtyj")
+
+[node name="Polygon2D6" type="Polygon2D" parent="RigidBody2D"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_qxobx")
+position = Vector2(-25, -11)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_67ly3")
+polygon = PackedVector2Array(43, -24, 76, -1, 88, 20, 90, 65, 62, 76, 45, 77, 40, 63, 27, 44, 16, 37)
