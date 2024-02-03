@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://j2y552wct7ai"]
+[gd_scene load_steps=5 format=3 uid="uid://b05x3sr4y65l1"]
 
 [ext_resource type="Script" path="res://Source/Entities/DragonBody.cs" id="1_2hy77"]
 [ext_resource type="Texture2D" uid="uid://bpe76no7n0tfh" path="res://Assets/Images/Placeholder/DragonBody.png" id="2_4p4o4"]
