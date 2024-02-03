@@ -13,17 +13,12 @@ script = ExtResource("1_6a2ec")
 position = Vector2(1532, 483)
 
 [node name="DragonNeck" parent="." instance=ExtResource("3_fauhx")]
-position = Vector2(1486, 446)
+position = Vector2(1486, 444)
 
 [node name="DragonHead" parent="." instance=ExtResource("4_e4l5y")]
 position = Vector2(1461, 433)
 
 [node name="Links" type="Node2D" parent="."]
-
-[node name="PinJoint2D" type="PinJoint2D" parent="Links"]
-position = Vector2(1480, 425)
-node_a = NodePath("../../DragonHead")
-node_b = NodePath("../../DragonNeck")
 
 [node name="PinJoint2D2" type="PinJoint2D" parent="Links"]
 position = Vector2(1504, 462)

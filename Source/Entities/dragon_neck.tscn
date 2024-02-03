@@ -15,6 +15,7 @@ shader_parameter/offset = Vector2(0, 0)
 [node name="DragonNeck" type="Node2D"]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(-0.0424676, 4.02452)
