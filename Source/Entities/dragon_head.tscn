@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://fnq5y6bvyalx"]
+
+[ext_resource type="Shader" path="res://Source/Shaders/dragon_body.gdshader" id="1_wrp5n"]
+[ext_resource type="Texture2D" uid="uid://btm04p2uq8btt" path="res://Assets/Images/Dragon/20240203_125200.jpg" id="2_ami7m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_74kbb"]
+shader = ExtResource("1_wrp5n")
+shader_parameter/motion = Vector2(20, 20)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tese"]
+
+[node name="DragonHead" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_74kbb")
+position = Vector2(-1414, -428)
+texture = ExtResource("2_ami7m")
+polygon = PackedVector2Array(1385, 434, 1375, 434, 1366, 440, 1359, 436, 1359, 427, 1366, 422, 1375, 420, 1388, 415, 1393, 406, 1387, 400, 1391, 396, 1400, 394, 1413, 393, 1430, 373, 1437, 372, 1439, 376, 1430, 382, 1424, 393, 1431, 386, 1437, 383, 1441, 386, 1437, 389, 1428, 395, 1443, 397, 1456, 405, 1430, 466, 1419, 468, 1407, 465, 1397, 458, 1381, 459, 1366, 458, 1359, 456, 1360, 449, 1374, 447, 1394, 446, 1405, 445, 1416, 443, 1409, 440, 1402, 439, 1397, 438)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_0tese")
