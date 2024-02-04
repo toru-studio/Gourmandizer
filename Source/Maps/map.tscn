@@ -1,14 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk4u22qm3viy4"]
+[gd_scene load_steps=10 format=3 uid="uid://bk4u22qm3viy4"]
 
 [ext_resource type="Shader" path="res://Source/Shaders/dragon_body.gdshader" id="1_qhprs"]
 [ext_resource type="Texture2D" uid="uid://dutch7321qhrd" path="res://Assets/Images/Environment/Tilemap.png" id="2_8mrqq"]
 [ext_resource type="Texture2D" uid="uid://ccrfvbg8og2ba" path="res://Assets/Images/Environment/Rock.png" id="2_cfi1n"]
+[ext_resource type="Texture2D" uid="uid://cwjlrn1i52uvx" path="res://Assets/Images/Environment/Sky.jpg" id="3_astxs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ufgym"]
 shader = ExtResource("1_qhprs")
 shader_parameter/motion = Vector2(1, 0)
 shader_parameter/scale = 0.005
 shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_os2qp"]
+shader = ExtResource("1_qhprs")
+shader_parameter/motion = Vector2(-5, 5)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t7drb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d654s"]
 texture = ExtResource("2_8mrqq")
@@ -29,6 +38,7 @@ texture_region_size = Vector2i(1500, 1500)
 1:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-750, -750, 750, -750, 750, 750, -750, 750)
 0:2/0 = 0
+0:2/0/material = SubResource("CanvasItemMaterial_t7drb")
 0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:2/0/physics_layer_0/angular_velocity = 0.0
 1:2/0 = 0
@@ -50,6 +60,12 @@ material = SubResource("ShaderMaterial_ufgym")
 position = Vector2(3750, 3754)
 scale = Vector2(5, 5)
 texture = ExtResource("2_cfi1n")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_os2qp")
+texture = ExtResource("3_astxs")
+polygon = PackedVector2Array(0, 693, 1800, 694, 1800, 690, 1830, 690, 1830, 660, 1860, 660, 1860, 630, 1980, 630, 1980, 600, 2010, 600, 2010, 570, 2430, 570, 2430, 540, 2520, 540, 2520, 510, 2550, 510, 2550, 450, 2520, 450, 2520, 300, 2460, 300, 2460, 182, 2490, 182, 2490, 154, 2760, 154, 2760, 0, 0, 0)
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(0.02, 0.02)
