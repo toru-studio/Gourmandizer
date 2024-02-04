@@ -13,10 +13,10 @@ size = Vector2(158.75, 95.25)
 [node name="Map" parent="." instance=ExtResource("1_twuys")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_63ya0")]
-position = Vector2(45, 667)
+position = Vector2(2094, 545)
 
 [node name="Dragon" parent="." instance=ExtResource("3_tv4qa")]
-position = Vector2(862, 55)
+position = Vector2(809, 32)
 
 [node name="OfferingArea" type="Area2D" parent="."]
 position = Vector2(0, -45)

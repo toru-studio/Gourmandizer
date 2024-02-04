@@ -22,3 +22,9 @@ position = Vector2(1461, 433)
 
 [node name="PinJoint2D2" type="PinJoint2D" parent="Links"]
 position = Vector2(1504, 462)
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="Links"]
+position = Vector2(1480, 428)
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="Links"]
+position = Vector2(1472, 444)
