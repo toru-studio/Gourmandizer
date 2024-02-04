@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b74fqfnjgutr6"]
+[gd_scene load_steps=4 format=3 uid="uid://gfx2wkt3si88"]
 
-[ext_resource type="Texture2D" uid="uid://bust3maokfvnl" path="res://Assets/Images/Placeholder/Character.png" id="1_7wwsu"]
+[ext_resource type="Texture2D" uid="uid://cxrwivjiyk616" path="res://Assets/Images/Placeholder/Character.png" id="1_7wwsu"]
 [ext_resource type="Script" path="res://Source/Entities/player.cs" id="1_h5ae2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tm680"]
