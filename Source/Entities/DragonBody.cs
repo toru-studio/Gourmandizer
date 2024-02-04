@@ -9,7 +9,6 @@ public partial class DragonBody : Node2D
 	private List<RigidBody2D> RigidBodies;
 	private List<Vector2> RigidBodyPositions;
 
-	private double alapsed;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -24,18 +23,6 @@ public partial class DragonBody : Node2D
 			this.RigidBodyPositions.Add(this.ToLocal(RigidBodies[i].GlobalPosition));
 		}
 
-		this.alapsed = 0.0;
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		alapsed += delta;
-		if (alapsed > 3.0)
-		{
-			this.Expand(1.1f);
-			alapsed = 0;
-		}
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -96,6 +83,5 @@ public partial class DragonBody : Node2D
 			}
 		}
 
-		this.GlobalPosition = new Vector2(this.GlobalPosition.X, this.GlobalPosition.Y - (maxHeight - minHeight) * 4);
 	}
 }
