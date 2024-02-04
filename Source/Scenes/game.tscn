@@ -16,7 +16,7 @@ size = Vector2(158.75, 95.25)
 position = Vector2(45, 667)
 
 [node name="Dragon" parent="." instance=ExtResource("3_tv4qa")]
-position = Vector2(18, 15)
+position = Vector2(612, 38)
 
 [node name="OfferingArea" type="Area2D" parent="."]
 position = Vector2(0, -45)
