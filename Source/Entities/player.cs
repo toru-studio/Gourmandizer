@@ -48,18 +48,21 @@ public partial class player : CharacterBody2D
 		else if (Input.IsKeyPressed(Key.Left) || Input.IsKeyPressed(Key.A))
 		{
 			this.Character.FlipH = true;
+			this.Character.Position = new Vector2(-15, 2);
 			AnimationPlayer.Play("walk_cycle");
 			velocity.X -= MoveAcceleration;
 		}
 		else if (Input.IsKeyPressed(Key.Right) || Input.IsKeyPressed(Key.D))
 		{
 			this.Character.FlipH = false;
+			this.Character.Position = new Vector2(-10, 2);
 			AnimationPlayer.Play("walk_cycle");
 			velocity.X += MoveAcceleration;
 		}
 		else
 		{
 			this.Character.FlipH = false;
+			this.Character.Position = new Vector2(-10, 2);
 			AnimationPlayer.Play("idle");
 			//Friction
 			velocity.X = Mathf.Lerp(velocity.X, 0, (Friction) * (float)delta);
