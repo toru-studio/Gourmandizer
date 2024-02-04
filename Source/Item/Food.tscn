@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://byo2uyqjd05b0"]
 
-[ext_resource type="Texture2D" uid="uid://j8oo6e66343i" path="res://Assets/Images/Placeholder/Treasure.png" id="1_flkci"]
 [ext_resource type="Script" path="res://Source/Item/Food.cs" id="1_okqxo"]
+[ext_resource type="Texture2D" uid="uid://cahq5nshwkeci" path="res://Assets/Images/Flowers/Flower3.png" id="2_5pvi7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xij6b"]
 radius = 4.0
@@ -10,7 +10,9 @@ radius = 4.0
 script = ExtResource("1_okqxo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_flkci")
+position = Vector2(0, -1.19209e-07)
+scale = Vector2(0.0128373, 0.0128373)
+texture = ExtResource("2_5pvi7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xij6b")
