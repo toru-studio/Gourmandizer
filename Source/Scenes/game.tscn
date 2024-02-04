@@ -6,30 +6,42 @@
 [ext_resource type="PackedScene" uid="uid://dw14morlkyag4" path="res://Source/Entities/dragon.tscn" id="3_tv4qa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24llh"]
-size = Vector2(158.75, 95.25)
+size = Vector2(454.688, 186.813)
 
 [node name="Game" type="Node"]
 
 [node name="Map" parent="." instance=ExtResource("1_twuys")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_63ya0")]
-position = Vector2(2094, 545)
+position = Vector2(1909, 565)
+
+[node name="OfferingArea" type="Area2D" parent="."]
+position = Vector2(809, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OfferingArea"]
+position = Vector2(1407.34, 487.594)
+shape = SubResource("RectangleShape2D_24llh")
 
 [node name="Dragon" parent="." instance=ExtResource("3_tv4qa")]
 position = Vector2(809, 32)
-
-[node name="OfferingArea" type="Area2D" parent="."]
-position = Vector2(0, -45)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OfferingArea"]
-position = Vector2(78.625, 687.625)
-shape = SubResource("RectangleShape2D_24llh")
 
 [node name="FoodItems" type="Node2D" parent="."]
 position = Vector2(0, -45)
 
 [node name="Food" parent="FoodItems" instance=ExtResource("3_eqokd")]
-position = Vector2(326, 557)
+position = Vector2(2026, 606)
+
+[node name="Food" parent="FoodItems/Food" instance=ExtResource("3_eqokd")]
+position = Vector2(2026, 606)
+
+[node name="Food" parent="FoodItems/Food/Food" instance=ExtResource("3_eqokd")]
+position = Vector2(2026, 606)
+
+[node name="Food" parent="FoodItems/Food/Food/Food" instance=ExtResource("3_eqokd")]
+position = Vector2(2026, 606)
 
 [connection signal="body_entered" from="OfferingArea" to="PlayerCharacter" method="_on_offering_area_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food/Food" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food/Food/Food" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food/Food/Food/Food" to="PlayerCharacter" method="_on_food_body_entered"]

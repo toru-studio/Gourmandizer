@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Godot;
 using Godot.Collections;
@@ -20,16 +21,18 @@ public partial class Dragon : Node2D
 
 	private Array<Node> Links;
 	
-	private double expandAlapsed;
-
 	private double extendAlapsed;
 
 	private double curExtend;
 
-	private bool extended;
+	public bool Extended { get { return this.extended; } }
+	private bool extended = false;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		GD.Print("Dragon Instance ID: ", GetInstanceId());
+		GD.Print("Dragon Hash Code: ", GetHashCode());
 		this.Player = this.GetParent().GetNode<player>("PlayerCharacter");
 		this.DragonHead = this.GetNode<Node2D>("DragonHead");
 		this.DragonNeck = this.GetNode<Node2D>("DragonNeck");
@@ -46,7 +49,6 @@ public partial class Dragon : Node2D
 		((PinJoint2D)this.Links[2]).NodeA = this.DragonHead.GetChild<RigidBody2D>(0).GetPath();
 		((PinJoint2D)this.Links[2]).NodeB = this.DragonNeck.GetChild<RigidBody2D>(0).GetPath();
 
-		this.expandAlapsed = 0.0f;
 		this.extendAlapsed = 0.0;
 		this.curExtend = 0.0;
 		this.extended = false;
@@ -55,11 +57,10 @@ public partial class Dragon : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		this.expandAlapsed += delta;
 		this.extendAlapsed += delta;
 		this.TrackPlayer();
 
-		if (!this.extended && this.Player.GlobalPosition.DistanceTo(this.RootDragonPos) < 200f)
+		if (!this.Extended && this.Player.GlobalPosition.DistanceTo(this.RootDragonPos) < 200f)
 		{
 			this.ExtendNeck();
 		}
@@ -67,36 +68,32 @@ public partial class Dragon : Node2D
 		{
 			this.RetractNeck();
 		}
-
-		if (this.expandAlapsed > 20.0)
-		{
-			this.Expand();
-		}
 	}
 
-	private void Expand()
+	public void Expand(float amount)
 	{
+		GD.Print("TEST");
 		this.RootNeckPos = new Vector2(this.RootNeckPos.X, this.RootNeckPos.Y - this.RootNeckPos.Y * 0.1f);
 
 		foreach (Node2D child in this.DragonHead.GetChild<RigidBody2D>(0).GetChildren())
 		{
-			child.Scale *= 1.1f;
+			child.Scale *= amount;
 			
 			// Adjusting for terrible polygon placement B)
 			if (child.Name.Equals("Polygon2D"))
 			{
-				child.Position *= 1.1f;
+				child.Position *= amount;
 			}
 		}
-		this.DragonNeck.Scale *= 1.1f;
+		this.DragonNeck.Scale *= amount;
 
 		foreach (PinJoint2D pinJoint2D in this.Links)
 		{
-			pinJoint2D.Scale *= 1.1f;
+			pinJoint2D.Scale *= amount;
 			pinJoint2D.GlobalPosition = new Vector2(pinJoint2D.GlobalPosition.X, pinJoint2D.GlobalPosition.Y - pinJoint2D.GlobalPosition.Y * 0.1f);
 		}
-		this.expandAlapsed = 0.0;
 	}
+	
 	private void TrackPlayer()
 	{
 		this.DragonNeck.LookAt(this.Player.GlobalPosition);
@@ -120,7 +117,7 @@ public partial class Dragon : Node2D
 
 	private void RetractNeck()
 	{
-		if (this.extended)
+		if (this.Extended)
 		{
 			this.extended = false;
 		}
@@ -134,4 +131,5 @@ public partial class Dragon : Node2D
 			}
 		}
 	}
+	
 }
