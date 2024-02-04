@@ -12,7 +12,7 @@ size = Vector2(158.75, 95.25)
 [node name="Map" parent="." instance=ExtResource("1_xrbnm")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_ohbx3")]
-position = Vector2(2277, 105)
+position = Vector2(508, 934)
 
 [node name="OfferingArea" type="Area2D" parent="."]
 position = Vector2(0, -45)
@@ -34,25 +34,10 @@ position = Vector2(660, 980)
 position = Vector2(1199, 572)
 
 [node name="Food4" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(1812, 261)
+position = Vector2(1808, 270)
 
 [node name="Food5" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2153, 257)
-
-[node name="Food10" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2272, 201)
-
-[node name="Food11" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2222, 181)
-
-[node name="Food12" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2308, 191)
-
-[node name="Food13" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2303, 191)
-
-[node name="Food14" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2322, 167)
+position = Vector2(2159, 270)
 
 [node name="Food9" parent="FoodItems" instance=ExtResource("4_h0qnc")]
 position = Vector2(2719, -2)
@@ -64,7 +49,7 @@ position = Vector2(2265, 420)
 position = Vector2(1951, 425)
 
 [node name="Food7" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(115, 910)
+position = Vector2(124, 903)
 
 [connection signal="body_entered" from="OfferingArea" to="PlayerCharacter" method="_on_offering_area_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food" to="PlayerCharacter" method="_on_food_body_entered"]
@@ -72,11 +57,6 @@ position = Vector2(115, 910)
 [connection signal="body_entered" from="FoodItems/Food3" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food4" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food5" to="PlayerCharacter" method="_on_food_body_entered"]
-[connection signal="body_entered" from="FoodItems/Food10" to="PlayerCharacter" method="_on_food_body_entered"]
-[connection signal="body_entered" from="FoodItems/Food11" to="PlayerCharacter" method="_on_food_body_entered"]
-[connection signal="body_entered" from="FoodItems/Food12" to="PlayerCharacter" method="_on_food_body_entered"]
-[connection signal="body_entered" from="FoodItems/Food13" to="PlayerCharacter" method="_on_food_body_entered"]
-[connection signal="body_entered" from="FoodItems/Food14" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food9" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food8" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food6" to="PlayerCharacter" method="_on_food_body_entered"]
