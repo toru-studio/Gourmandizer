@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b74fqfnjgutr6"]
+[gd_scene load_steps=8 format=3 uid="uid://b74fqfnjgutr6"]
 
 [ext_resource type="Script" path="res://Source/Entities/player.cs" id="1_h5ae2"]
 [ext_resource type="Texture2D" uid="uid://bbuefercct2xg" path="res://Assets/Images/Player/Player.png" id="2_8bbsw"]
@@ -40,9 +40,25 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_lpan6"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ttdoi"]
 _data = {
 "RESET": SubResource("Animation_8sp0v"),
+"idle": SubResource("Animation_lpan6"),
 "walk_cycle": SubResource("Animation_07xag")
 }
 

@@ -5,6 +5,8 @@ public partial class player : CharacterBody2D
 { 
 	private Dragon Dragon;
 	private bool Entered;
+	private AnimationPlayer AnimationPlayer;
+	private Sprite2D Character;
 	
 	public float MoveSpeed = 80.0f;
 	public float MoveAcceleration = 10.0f;
@@ -19,6 +21,8 @@ public partial class player : CharacterBody2D
 	{
 		this.Dragon = (Dragon)this.GetParent().FindChild("Dragon");
 		this.Entered = false;
+		this.AnimationPlayer = this.GetNode<AnimationPlayer>("AnimationPlayer");
+		this.Character = this.GetNode<Sprite2D>("Character");
 		GD.Print("Player Dragon Instance ID: ", this.Dragon.GetInstanceId());
 		GD.Print("Player Dragon Hash Code: ", this.Dragon.GetHashCode());
 	}
@@ -41,16 +45,22 @@ public partial class player : CharacterBody2D
 			velocity.Y += (Gravity + DefaultWeight) * (float)delta;
 		}
 		// Horizontal movement
-		else if (Input.IsKeyPressed(Key.Left))
+		else if (Input.IsKeyPressed(Key.Left) || Input.IsKeyPressed(Key.A))
 		{
+			this.Character.FlipH = true;
+			AnimationPlayer.Play("walk_cycle");
 			velocity.X -= MoveAcceleration;
 		}
-		else if (Input.IsKeyPressed(Key.Right))
+		else if (Input.IsKeyPressed(Key.Right) || Input.IsKeyPressed(Key.D))
 		{
+			this.Character.FlipH = false;
+			AnimationPlayer.Play("walk_cycle");
 			velocity.X += MoveAcceleration;
 		}
 		else
 		{
+			this.Character.FlipH = false;
+			AnimationPlayer.Play("idle");
 			//Friction
 			velocity.X = Mathf.Lerp(velocity.X, 0, (Friction) * (float)delta);
 		}
