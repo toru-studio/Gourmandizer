@@ -1,20 +1,194 @@
-[gd_scene load_steps=4 format=3 uid="uid://gfx2wkt3si88"]
+[gd_scene load_steps=12 format=3 uid="uid://b74fqfnjgutr6"]
 
-[ext_resource type="Texture2D" uid="uid://cxrwivjiyk616" path="res://Assets/Images/Placeholder/Character.png" id="1_7wwsu"]
 [ext_resource type="Script" path="res://Source/Entities/player.cs" id="1_h5ae2"]
+[ext_resource type="Texture2D" uid="uid://bbuefercct2xg" path="res://Assets/Images/Player/Player.png" id="2_8bbsw"]
+[ext_resource type="Texture2D" uid="uid://dl2plsjk7genu" path="res://Assets/Images/Player/Mushroom.png" id="2_siky5"]
+[ext_resource type="Texture2D" uid="uid://bhf71tv1urtv1" path="res://Assets/Images/Player/Thistle.png" id="4_ymcf7"]
+[ext_resource type="Texture2D" uid="uid://dl6ylw7j40dl1" path="res://Assets/Images/Player/Arms.png" id="5_lx7uh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tm680"]
 radius = 12.0
 height = 60.0
 
+[sub_resource type="Animation" id="Animation_07xag"]
+resource_name = "walk_cycle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, -10), Vector2(2, -9), Vector2(2, -9), Vector2(2, -9), Vector2(2, -9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0, 0.0872665, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 5), Vector2(2, 4), Vector2(2, 5), Vector2(2, 4), Vector2(2, 5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.0698132, 0.0, 0.0872665, -0.0174533, 0.0349066]
+}
+
+[sub_resource type="Animation" id="Animation_8sp0v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lpan6"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ttdoi"]
+_data = {
+"RESET": SubResource("Animation_8sp0v"),
+"idle": SubResource("Animation_lpan6"),
+"walk_cycle": SubResource("Animation_07xag")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8vf6"]
+size = Vector2(24, 22)
+
 [node name="PlayerCharacter" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_h5ae2")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.045, 0.045)
+texture = ExtResource("2_siky5")
+
 [node name="Character" type="Sprite2D" parent="."]
 position = Vector2(-10, 2)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_7wwsu")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_8bbsw")
+offset = Vector2(215, -30)
+hframes = 8
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
@@ -28,3 +202,28 @@ shape = SubResource("CapsuleShape2D_tm680")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup"]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_tm680")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ttdoi")
+}
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_g8vf6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(2, 0)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("5_lx7uh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(2, 4)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("4_ymcf7")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("..")
+node_b = NodePath("../RigidBody2D")
