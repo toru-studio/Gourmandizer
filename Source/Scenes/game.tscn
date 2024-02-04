@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://gfx2wkt3si88" path="res://Source/Entities/player_character.tscn" id="1_63ya0"]
 [ext_resource type="PackedScene" uid="uid://dacum8ak8y6ut" path="res://Source/Maps/map.tscn" id="1_twuys"]
 [ext_resource type="PackedScene" uid="uid://byo2uyqjd05b0" path="res://Source/Item/Food.tscn" id="3_eqokd"]
-[ext_resource type="PackedScene" path="res://Source/Entities/dragon.tscn" id="3_tv4qa"]
+[ext_resource type="PackedScene" uid="uid://coly10o4vrwsj" path="res://Source/Entities/dragon.tscn" id="3_tv4qa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24llh"]
 size = Vector2(158.75, 95.25)
