@@ -8,9 +8,8 @@ public partial class player : CharacterBody2D
 	public float JumpVelocity = 400.0f;
 	public float Friction = 10f;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	public const float DefaultWeight = 25.0f;
-	public float CurrentWeight = 0.0f;
-	public int FoodItems = 10;
+	public float CurrentWeight = 10.0f;
+	public int FoodItems = 0;
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -21,13 +20,13 @@ public partial class player : CharacterBody2D
 		// Handle jump
 		if (Input.IsKeyPressed(Key.Space) && IsOnFloor())
 		{
-			velocity.Y = -JumpVelocity + CurrentWeight * 10;
+			velocity.Y = -JumpVelocity + CurrentWeight * 2;
 		}
 
 		// Apply gravity
 		if (!IsOnFloor())
 		{
-			velocity.Y += (Gravity + DefaultWeight) * (float)delta;
+			velocity.Y += (Gravity + CurrentWeight) * (float)delta;
 		}
 		// Horizontal movement
 		else if (Input.IsKeyPressed(Key.Left))
