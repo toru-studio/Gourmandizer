@@ -45,26 +45,27 @@ shader_parameter/offset_scale = 2.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tese"]
 
 [node name="DragonHead" type="Node2D"]
-scale = Vector2(0.5, 0.5)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-freeze = true
 
 [node name="Polygon2D3" type="Polygon2D" parent="RigidBody2D"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_8fpvl")
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_7ecbv")
 polygon = PackedVector2Array(-66, 5, -60, 8, -44, 10, -39, 11, -38, 16, -46, 16, -51, 19, -60, 23, -61, 26, 5, 21, 6, 3)
 
 [node name="Polygon2D4" type="Polygon2D" parent="RigidBody2D"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_0mj1p")
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_avcgt")
 polygon = PackedVector2Array(-63, 6, -61, 8, -60, 6, -58, 8, -56, 6, -54, 8, -52, 6, -50, 8, -48, 6, -46, 8, -44, 5, -42, 8, -39, 4, -36, 8, -33, 4, -30, 8, -25, 5, -25, 9, -20, 7, -21, 11, -16, 8, -16, 12, -10, 9, -11, 13, -7, 10, -7, 13, -4, 10, -3, 13, 0, 12, -11, 3, -59, 1)
 
 [node name="Polygon2D5" type="Polygon2D" parent="RigidBody2D"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_wivqj")
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_avcgt")
 polygon = PackedVector2Array(-62, 26, -61, 24, -59, 25, -58, 22, -55, 23, -52, 20, -51, 22, -49, 20, -48, 22, -47, 20, -46, 22, -45, 20, -44, 22, -43, 20, -41, 22, -40, 19, -37, 22, -34, 19, -32, 21, -30, 18, -27, 21, -26, 18, -24, 21, -23, 18, -21, 21, -49, 25)
 
@@ -72,7 +73,8 @@ polygon = PackedVector2Array(-62, 26, -61, 24, -59, 25, -58, 22, -55, 23, -52, 2
 texture_filter = 2
 texture_repeat = 2
 material = SubResource("ShaderMaterial_74kbb")
-position = Vector2(-1413, -429)
+position = Vector2(-706.5, -214.5)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_ami7m")
 polygon = PackedVector2Array(1385, 434, 1375, 434, 1366, 435, 1351, 435, 1341, 439, 1344, 427, 1347, 418, 1355, 409, 1357, 418, 1363, 416, 1370, 412, 1379, 406, 1381, 403, 1389, 400, 1394, 397, 1405, 396, 1416, 395, 1431, 379, 1457, 389, 1461, 394, 1430, 385, 1427, 395, 1434, 386, 1470, 387, 1464, 390, 1437, 389, 1433, 396, 1443, 397, 1456, 405, 1430, 466, 1419, 468, 1407, 465, 1397, 458, 1381, 459, 1366, 458, 1351, 455, 1359, 451, 1375, 450, 1396, 448, 1405, 445, 1416, 443, 1409, 440, 1402, 439, 1397, 438)
 
@@ -80,7 +82,8 @@ polygon = PackedVector2Array(1385, 434, 1375, 434, 1366, 435, 1351, 435, 1341, 4
 texture_filter = 2
 texture_repeat = 2
 material = SubResource("ShaderMaterial_pvsd3")
-position = Vector2(7, 0)
+position = Vector2(3.5, 0)
+scale = Vector2(0.5, 0.5)
 antialiased = true
 texture = ExtResource("4_2htxl")
 texture_scale = Vector2(0.001, 0.001)

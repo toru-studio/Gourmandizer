@@ -11,6 +11,21 @@ public partial class player : CharacterBody2D
 	public float CurrentWeight = 10.0f;
 	public int FoodItems = 0;
 
+	private Dragon Dragon;
+	private bool Entered;
+	private AnimationPlayer AnimationPlayer;
+	private Sprite2D Character;
+
+public override void _Ready()
+	{
+		this.Dragon = (Dragon)this.GetParent().FindChild("Dragon");
+		this.Entered = false;
+		this.AnimationPlayer = this.GetNode<AnimationPlayer>("AnimationPlayer");
+		this.Character = this.GetNode<Sprite2D>("Character");
+		GD.Print("Player Dragon Instance ID: ", this.Dragon.GetInstanceId());
+		GD.Print("Player Dragon Hash Code: ", this.Dragon.GetHashCode());
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		var velocity = Velocity;
@@ -29,16 +44,25 @@ public partial class player : CharacterBody2D
 			velocity.Y += (Gravity + CurrentWeight) * (float)delta;
 		}
 		// Horizontal movement
-		else if (Input.IsKeyPressed(Key.Left))
+		else if (Input.IsKeyPressed(Key.Left) || Input.IsKeyPressed(Key.A))
 		{
+			this.Character.FlipH = true;
+			this.Character.Position = new Vector2(-15, 2);
+			AnimationPlayer.Play("walk_cycle");
 			velocity.X -= MoveAcceleration;
 		}
-		else if (Input.IsKeyPressed(Key.Right))
+		else if (Input.IsKeyPressed(Key.Right) || Input.IsKeyPressed(Key.D))
 		{
+			this.Character.FlipH = false;
+			this.Character.Position = new Vector2(-10, 2);
+			AnimationPlayer.Play("walk_cycle");
 			velocity.X += MoveAcceleration;
 		}
 		else
 		{
+			this.Character.FlipH = false;
+			this.Character.Position = new Vector2(-10, 2);
+			AnimationPlayer.Play("idle");
 			//Friction
 			velocity.X = Mathf.Lerp(velocity.X, 0, (Friction) * (float)delta);
 		}
@@ -50,12 +74,32 @@ public partial class player : CharacterBody2D
 		MoveAndSlide();
 	}
 
+	public override void _Process(double delta)
+	{
+		if (this.Entered)
+		{
+			if (this.FoodItems == 0 || !this.Dragon.Extended) {return;}
+			Console.WriteLine("Weight - " + FoodItems);
+			CurrentWeight -= FoodItems;
+			this.Dragon.Expand(1.1f*FoodItems);
+			FoodItems = 0;
+		}
+	}
+
 	private void _on_offering_area_body_entered(Node2D body)
 	{
-		if (body.Name != "PlayerCharacter") return;
-		Console.WriteLine("Weight - " + FoodItems);
-		CurrentWeight -= FoodItems;
-		FoodItems = 0;
+		if (body.Name.Equals("PlayerCharacter"))
+		{
+			this.Entered = true;
+		}
+	}
+
+	private void _on_offering_area_body_exited(Node2D body)
+	{
+		if (body.Name.Equals("PlayerCharacter"))
+		{
+			this.Entered = false;
+		}
 	}
 
 	private void _on_food_body_entered(Node2D body)

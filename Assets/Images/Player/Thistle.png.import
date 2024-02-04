@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dixiy5hrsnq8l"
-path="res://.godot/imported/Flower1.png-863298c21b0a5061f00c14a1858adaf2.ctex"
+uid="uid://bhf71tv1urtv1"
+path="res://.godot/imported/Thistle.png-9c6e7ebf91337deecaa265d0240318ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Flowers/Flower1.png"
-dest_files=["res://.godot/imported/Flower1.png-863298c21b0a5061f00c14a1858adaf2.ctex"]
+source_file="res://Assets/Images/Player/Thistle.png"
+dest_files=["res://.godot/imported/Thistle.png-9c6e7ebf91337deecaa265d0240318ab.ctex"]
 
 [params]
 

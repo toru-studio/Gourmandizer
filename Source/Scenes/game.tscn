@@ -1,38 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv2i4q7fn6hv5"]
+[gd_scene load_steps=6 format=3 uid="uid://dbf0bqhyeocbv"]
 
-[ext_resource type="PackedScene" uid="uid://gfx2wkt3si88" path="res://Source/Entities/player_character.tscn" id="1_63ya0"]
-[ext_resource type="PackedScene" uid="uid://dacum8ak8y6ut" path="res://Source/Maps/map.tscn" id="1_twuys"]
+[ext_resource type="PackedScene" uid="uid://b74fqfnjgutr6" path="res://Source/Entities/player_character.tscn" id="1_63ya0"]
+[ext_resource type="PackedScene" uid="uid://bk4u22qm3viy4" path="res://Source/Maps/map.tscn" id="1_twuys"]
 [ext_resource type="PackedScene" uid="uid://byo2uyqjd05b0" path="res://Source/Item/Food.tscn" id="3_eqokd"]
 [ext_resource type="PackedScene" uid="uid://dw14morlkyag4" path="res://Source/Entities/dragon.tscn" id="3_tv4qa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24llh"]
-size = Vector2(158.75, 95.25)
+size = Vector2(454.688, 186.813)
 
 [node name="Game" type="Node"]
 
 [node name="Map" parent="." instance=ExtResource("1_twuys")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_63ya0")]
-visible = false
-position = Vector2(45, 667)
-
-[node name="Dragon" parent="." instance=ExtResource("3_tv4qa")]
-visible = false
-position = Vector2(18, 15)
+position = Vector2(1909, 565)
 
 [node name="OfferingArea" type="Area2D" parent="."]
-position = Vector2(0, -45)
+position = Vector2(809, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OfferingArea"]
-position = Vector2(78.625, 687.625)
+position = Vector2(1407.34, 487.594)
 shape = SubResource("RectangleShape2D_24llh")
 
+[node name="Dragon" parent="." instance=ExtResource("3_tv4qa")]
+position = Vector2(809, 32)
+
 [node name="FoodItems" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, -45)
 
 [node name="Food" parent="FoodItems" instance=ExtResource("3_eqokd")]
-position = Vector2(217, 689)
+position = Vector2(2026, 606)
+
+[node name="Food" parent="FoodItems/Food" instance=ExtResource("3_eqokd")]
+position = Vector2(2026, 606)
+
+[node name="Food" parent="FoodItems/Food/Food" instance=ExtResource("3_eqokd")]
+position = Vector2(2026, 606)
+
+[node name="Food" parent="FoodItems/Food/Food/Food" instance=ExtResource("3_eqokd")]
+position = Vector2(2026, 606)
 
 [connection signal="body_entered" from="OfferingArea" to="PlayerCharacter" method="_on_offering_area_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food/Food" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food/Food/Food" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food/Food/Food/Food" to="PlayerCharacter" method="_on_food_body_entered"]

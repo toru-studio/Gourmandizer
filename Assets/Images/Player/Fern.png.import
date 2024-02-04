@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dixiy5hrsnq8l"
-path="res://.godot/imported/Flower1.png-863298c21b0a5061f00c14a1858adaf2.ctex"
+uid="uid://k7k723ol2ti0"
+path="res://.godot/imported/Fern.png-ff23c52c597b29fd82177c754f20c5ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Flowers/Flower1.png"
-dest_files=["res://.godot/imported/Flower1.png-863298c21b0a5061f00c14a1858adaf2.ctex"]
+source_file="res://Assets/Images/Player/Fern.png"
+dest_files=["res://.godot/imported/Fern.png-ff23c52c597b29fd82177c754f20c5ff.ctex"]
 
 [params]
 
