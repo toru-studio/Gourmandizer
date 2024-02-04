@@ -36,7 +36,6 @@ rest = Transform2D(2.22127e-06, 1, -1, 2.22127e-06, 21, -13.4)
 [node name="2" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(20, 15.6)
 rotation = 0.785397
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707106, -0.707106, 0.707107, 20, 15.6)
 
 [node name="3" type="Bone2D" parent="Skeleton2D"]
@@ -48,13 +47,11 @@ rest = Transform2D(-0.965925, 0.258823, -0.258823, -0.965925, -1.90735e-06, 16.6
 [node name="4" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(-21, 15.6)
 rotation = 1.8326
-scale = Vector2(1, 1)
 rest = Transform2D(-0.258825, 0.965924, -0.965924, -0.258825, -21, 15.6)
 
 [node name="5" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(-20, -13.4)
 rotation = -2.618
-scale = Vector2(1, 1)
 rest = Transform2D(-0.866028, -0.499995, 0.499995, -0.866028, -20, -13.4)
 
 [node name="Sprite2D" type="Polygon2D" parent="."]
