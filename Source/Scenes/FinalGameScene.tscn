@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://g7e77w4r710v"]
+
+[ext_resource type="PackedScene" uid="uid://bx44brn7tu07n" path="res://Source/Maps/Final Level.tscn" id="1_xrbnm"]
+[ext_resource type="PackedScene" uid="uid://gfx2wkt3si88" path="res://Source/Entities/player_character.tscn" id="2_ohbx3"]
+[ext_resource type="PackedScene" uid="uid://byo2uyqjd05b0" path="res://Source/Item/Food.tscn" id="4_h0qnc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24llh"]
+size = Vector2(158.75, 95.25)
+
+[node name="Game" type="Node"]
+
+[node name="Map" parent="." instance=ExtResource("1_xrbnm")]
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_ohbx3")]
+position = Vector2(1781, 216)
+
+[node name="OfferingArea" type="Area2D" parent="."]
+position = Vector2(0, -45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OfferingArea"]
+position = Vector2(407, 677)
+shape = SubResource("RectangleShape2D_24llh")
+
+[node name="FoodItems" type="Node2D" parent="."]
+position = Vector2(0, -45)
+
+[node name="Food" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(1313, 510)
+
+[node name="Food2" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(660, 980)
+
+[node name="Food3" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(1199, 572)
+
+[node name="Food4" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(1812, 261)
+
+[node name="Food5" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(2158, 267)
+
+[node name="Food6" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(1951, 425)
+
+[node name="Food7" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(115, 910)
+
+[connection signal="body_entered" from="OfferingArea" to="PlayerCharacter" method="_on_offering_area_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food2" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food3" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food4" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food5" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food6" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food7" to="PlayerCharacter" method="_on_food_body_entered"]

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://gfx2wkt3si88" path="res://Source/Entities/player_character.tscn" id="1_63ya0"]
 [ext_resource type="PackedScene" uid="uid://dacum8ak8y6ut" path="res://Source/Maps/map.tscn" id="1_twuys"]
 [ext_resource type="PackedScene" uid="uid://byo2uyqjd05b0" path="res://Source/Item/Food.tscn" id="3_eqokd"]
-[ext_resource type="PackedScene" path="res://Source/Entities/dragon.tscn" id="3_tv4qa"]
+[ext_resource type="PackedScene" uid="uid://dw14morlkyag4" path="res://Source/Entities/dragon.tscn" id="3_tv4qa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24llh"]
 size = Vector2(158.75, 95.25)
@@ -13,9 +13,11 @@ size = Vector2(158.75, 95.25)
 [node name="Map" parent="." instance=ExtResource("1_twuys")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_63ya0")]
+visible = false
 position = Vector2(45, 667)
 
 [node name="Dragon" parent="." instance=ExtResource("3_tv4qa")]
+visible = false
 position = Vector2(18, 15)
 
 [node name="OfferingArea" type="Area2D" parent="."]
@@ -26,6 +28,7 @@ position = Vector2(78.625, 687.625)
 shape = SubResource("RectangleShape2D_24llh")
 
 [node name="FoodItems" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -45)
 
 [node name="Food" parent="FoodItems" instance=ExtResource("3_eqokd")]
