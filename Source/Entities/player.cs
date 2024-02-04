@@ -3,9 +3,9 @@ using System;
 
 public partial class player : CharacterBody2D
 {
-	public float MoveSpeed = 50.0f;
+	public float MoveSpeed = 80.0f;
 	public float MoveAcceleration = 10.0f;
-	public float JumpVelocity = 400.0f;
+	public float JumpVelocity = 600.0f;
 	public float Friction = 10f;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public const float DefaultWeight = 25.0f;

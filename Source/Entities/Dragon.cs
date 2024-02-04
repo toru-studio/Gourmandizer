@@ -7,6 +7,10 @@ public partial class Dragon : Node2D
 
 	private Node2D DragonNeck;
 
+	private Vector2 RootHeadPos;
+	
+	private Vector2 RootNeckPos;
+
 	private DragonBody DragonBody;
 
 	private Array<Node> Links;
@@ -18,6 +22,8 @@ public partial class Dragon : Node2D
 		this.DragonHead = this.GetNode<Node2D>("DragonHead");
 		this.DragonNeck = this.GetNode<Node2D>("DragonNeck");
 		this.DragonBody = this.GetNode<DragonBody>("DragonBody");
+		this.RootHeadPos = this.DragonHead.GlobalPosition;
+		this.RootNeckPos = this.DragonNeck.GlobalPosition;
 		this.Links = this.GetNode<Node2D>("Links").GetChildren();
 
 		((PinJoint2D)this.Links[0]).NodeA = this.DragonNeck.GetChild<RigidBody2D>(0).GetPath();
@@ -30,13 +36,15 @@ public partial class Dragon : Node2D
 	public override void _Process(double delta)
 	{
 		alapsed += delta;
-		if (alapsed > 3.0)
+		if (alapsed > 20.0)
 		{
 			DragonBody.Expand(1.1f);
+			this.RootHeadPos = new Vector2(this.RootHeadPos.X, this.RootHeadPos.Y - this.RootHeadPos.Y * 0.1f);
+			this.RootNeckPos = new Vector2(this.RootNeckPos.X, this.RootNeckPos.Y - this.RootNeckPos.Y * 0.1f);
 			this.DragonHead.Scale *= 1.1f;
-			this.DragonHead.GlobalPosition = new Vector2(this.DragonHead.GlobalPosition.X, this.DragonHead.GlobalPosition.Y - this.DragonHead.GlobalPosition.Y * 0.1f);
+			this.DragonHead.GlobalPosition = this.RootHeadPos;
 			this.DragonNeck.Scale *= 1.1f;
-			this.DragonNeck.GlobalPosition = new Vector2(this.DragonNeck.GlobalPosition.X, this.DragonNeck.GlobalPosition.Y - this.DragonNeck.GlobalPosition.Y * 0.1f);
+			this.DragonNeck.GlobalPosition = this.RootNeckPos;
 			foreach (PinJoint2D pinJoint2D in this.Links)
 			{
 				pinJoint2D.Scale *= 1.1f;
