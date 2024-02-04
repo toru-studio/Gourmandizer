@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dk21w3amv42hr"
+path="res://.godot/imported/David 1.mp3-3d3fba48f27a95c4b61fdab740550e3f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/David 1.mp3"
+dest_files=["res://.godot/imported/David 1.mp3-3d3fba48f27a95c4b61fdab740550e3f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
