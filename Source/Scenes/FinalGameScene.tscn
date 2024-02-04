@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://g7e77w4r710v"]
 
 [ext_resource type="PackedScene" uid="uid://bx44brn7tu07n" path="res://Source/Maps/Final Level.tscn" id="1_xrbnm"]
-[ext_resource type="PackedScene" uid="uid://gfx2wkt3si88" path="res://Source/Entities/player_character.tscn" id="2_ohbx3"]
+[ext_resource type="PackedScene" uid="uid://b74fqfnjgutr6" path="res://Source/Entities/player_character.tscn" id="2_ohbx3"]
 [ext_resource type="PackedScene" uid="uid://byo2uyqjd05b0" path="res://Source/Item/Food.tscn" id="4_h0qnc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24llh"]
@@ -12,7 +12,7 @@ size = Vector2(158.75, 95.25)
 [node name="Map" parent="." instance=ExtResource("1_xrbnm")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_ohbx3")]
-position = Vector2(1602, 483)
+position = Vector2(2277, 105)
 
 [node name="OfferingArea" type="Area2D" parent="."]
 position = Vector2(0, -45)
@@ -40,7 +40,7 @@ position = Vector2(1812, 261)
 position = Vector2(2153, 257)
 
 [node name="Food10" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2605, 198)
+position = Vector2(2272, 201)
 
 [node name="Food11" parent="FoodItems" instance=ExtResource("4_h0qnc")]
 position = Vector2(2222, 181)

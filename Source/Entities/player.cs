@@ -91,6 +91,8 @@ public override void _Ready()
 		if (body.Name.Equals("PlayerCharacter"))
 		{
 			this.Entered = true;
+			CurrentWeight -= FoodItems;
+			FoodItems = 0;
 		}
 	}
 
@@ -107,7 +109,7 @@ public override void _Ready()
 		if (body.Name != "PlayerCharacter") return;
 		CurrentWeight += 1;
 		FoodItems += 1;
-		Console.WriteLine("Weight is Now " + FoodItems);
+		Console.WriteLine("Weight is Now " + CurrentWeight);
 	}
 	
 }
