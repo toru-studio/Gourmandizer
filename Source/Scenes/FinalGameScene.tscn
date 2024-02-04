@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://g7e77w4r710v"]
+[gd_scene load_steps=5 format=3 uid="uid://r1d7tabjg7pr"]
 
-[ext_resource type="PackedScene" uid="uid://bx44brn7tu07n" path="res://Source/Maps/Final Level.tscn" id="1_xrbnm"]
+[ext_resource type="PackedScene" uid="uid://bnrujfg567ps3" path="res://Source/Maps/Final Level.tscn" id="1_xrbnm"]
 [ext_resource type="PackedScene" uid="uid://b74fqfnjgutr6" path="res://Source/Entities/player_character.tscn" id="2_ohbx3"]
 [ext_resource type="PackedScene" uid="uid://byo2uyqjd05b0" path="res://Source/Item/Food.tscn" id="4_h0qnc"]
 
