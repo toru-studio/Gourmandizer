@@ -1,11 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://gfx2wkt3si88"]
+[gd_scene load_steps=7 format=3 uid="uid://b74fqfnjgutr6"]
 
-[ext_resource type="Texture2D" uid="uid://cxrwivjiyk616" path="res://Assets/Images/Placeholder/Character.png" id="1_7wwsu"]
 [ext_resource type="Script" path="res://Source/Entities/player.cs" id="1_h5ae2"]
+[ext_resource type="Texture2D" uid="uid://bbuefercct2xg" path="res://Assets/Images/Player/Player.png" id="2_8bbsw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tm680"]
 radius = 12.0
 height = 60.0
+
+[sub_resource type="Animation" id="Animation_07xag"]
+resource_name = "walk_cycle"
+length = 0.5
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_8sp0v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ttdoi"]
+_data = {
+"RESET": SubResource("Animation_8sp0v"),
+"walk_cycle": SubResource("Animation_07xag")
+}
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -13,8 +52,10 @@ script = ExtResource("1_h5ae2")
 
 [node name="Character" type="Sprite2D" parent="."]
 position = Vector2(-10, 2)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_7wwsu")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_8bbsw")
+offset = Vector2(215, -30)
+hframes = 8
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
@@ -28,3 +69,8 @@ shape = SubResource("CapsuleShape2D_tm680")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup"]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_tm680")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ttdoi")
+}
