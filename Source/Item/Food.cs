@@ -15,9 +15,6 @@ public partial class Food : Area2D
 
 	private void _on_body_entered(Node2D body)
 	{
-		Console.WriteLine(body.Name);
-
-		
 		if (body.Name == "PlayerCharacter") ;
 		{
 			if (body.Name != "PlayerCharacter") return;
