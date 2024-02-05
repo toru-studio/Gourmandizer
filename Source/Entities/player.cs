@@ -20,6 +20,8 @@ public partial class player : CharacterBody2D
 	private AudioStreamPlayer2D Steps;
 	public AudioStreamPlayer2D FlowerSound;
 
+	public bool DropPressed;
+
 	public override void _Ready()
 	{
 		this.Dragon = (Dragon)this.GetParent().FindChild("Dragon");
@@ -31,6 +33,7 @@ public partial class player : CharacterBody2D
 		this.FlowerSound = this.GetNode<AudioStreamPlayer2D>("FlowerPickup");
 		GD.Print("Player Dragon Instance ID: ", this.Dragon.GetInstanceId());
 		GD.Print("Player Dragon Hash Code: ", this.Dragon.GetHashCode());
+		DropPressed = false;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -55,8 +58,9 @@ public partial class player : CharacterBody2D
 		//Do Drop
 		if (Input.IsKeyPressed(Key.S) || Input.IsKeyPressed(Key.Down))
 		{
-			if (FoodItems > 0)
+			if (FoodItems > 0 && !DropPressed)
 			{
+				DropPressed = true;
 				Console.WriteLine("Drop Code");
 				var food = GD.Load<PackedScene>("res://Source/Item/Food.tscn");
 				var droppedFood = (Food)food.Instantiate();
@@ -65,6 +69,10 @@ public partial class player : CharacterBody2D
 				droppedFood.Position = new Vector2(this.Position.X - 30, this.Position.Y);
 				GetParent().GetNode("FoodItems").AddChild(droppedFood);
 			}
+		}
+		else
+		{
+			DropPressed = false;
 		}
 
 		// Horizontal movement
