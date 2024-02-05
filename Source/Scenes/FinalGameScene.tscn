@@ -47,9 +47,6 @@ position = Vector2(1290, 475)
 [node name="Food3" parent="FoodItems" instance=ExtResource("4_h0qnc")]
 position = Vector2(1174, 530)
 
-[node name="Food16" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(681, 681)
-
 [node name="Food13" parent="FoodItems" instance=ExtResource("4_h0qnc")]
 position = Vector2(1091, 592)
 
@@ -134,7 +131,6 @@ texture = ExtResource("13_0jxao")
 [connection signal="body_entered" from="OfferingArea" to="PlayerCharacter" method="_on_offering_area_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food3" to="PlayerCharacter" method="_on_food_body_entered"]
-[connection signal="body_entered" from="FoodItems/Food16" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food13" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food4" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food5" to="PlayerCharacter" method="_on_food_body_entered"]
