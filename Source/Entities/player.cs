@@ -3,8 +3,8 @@ using System;
 
 public partial class player : CharacterBody2D
 {
-	public float MoveSpeed = 120.0f;
-	public float MoveAcceleration = 20.0f;
+	public float MoveSpeed = 150.0f;
+	public float MoveAcceleration = 30.0f;
 	public float JumpVelocity = 400.0f;
 	public float Friction = 10f;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -44,7 +44,7 @@ public override void _Ready()
 			velocity.Y += (Gravity + CurrentWeight) * (float)delta;
 		}
 		// Horizontal movement
-		else if (Input.IsKeyPressed(Key.Left) || Input.IsKeyPressed(Key.A))
+		 if (Input.IsKeyPressed(Key.Left) || Input.IsKeyPressed(Key.A))
 		{
 			this.Character.FlipH = true;
 			this.Character.Position = new Vector2(-15, 2);
@@ -80,7 +80,7 @@ public override void _Ready()
 		{
 			if (this.FoodItems == 0 || !this.Dragon.Extended) {return;}
 			Console.WriteLine("Weight - " + FoodItems);
-			CurrentWeight -= FoodItems;
+			CurrentWeight -= FoodItems * 2;
 			this.Dragon.Expand(1.1f*FoodItems);
 			FoodItems = 0;
 		}
@@ -91,7 +91,7 @@ public override void _Ready()
 		if (body.Name.Equals("PlayerCharacter"))
 		{
 			this.Entered = true;
-			CurrentWeight -= FoodItems;
+			CurrentWeight -= FoodItems * 2;
 			FoodItems = 0;
 		}
 	}
@@ -107,7 +107,7 @@ public override void _Ready()
 	private void _on_food_body_entered(Node2D body)
 	{		
 		if (body.Name != "PlayerCharacter") return;
-		CurrentWeight += 1;
+		CurrentWeight += 2;
 		FoodItems += 1;
 		Console.WriteLine("Weight is Now " + CurrentWeight);
 	}
