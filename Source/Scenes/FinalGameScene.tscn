@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://g7e77w4r710v"]
+
+[ext_resource type="PackedScene" uid="uid://bx44brn7tu07n" path="res://Source/Maps/Final Level.tscn" id="1_xrbnm"]
+[ext_resource type="PackedScene" uid="uid://b74fqfnjgutr6" path="res://Source/Entities/player_character.tscn" id="2_ohbx3"]
+[ext_resource type="PackedScene" uid="uid://dw14morlkyag4" path="res://Source/Entities/dragon.tscn" id="4_fd0ur"]
+[ext_resource type="PackedScene" uid="uid://byo2uyqjd05b0" path="res://Source/Item/Food.tscn" id="4_h0qnc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24llh"]
+size = Vector2(449.375, 130.625)
+
+[node name="Game" type="Node"]
+
+[node name="Map" parent="." instance=ExtResource("1_xrbnm")]
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_ohbx3")]
+position = Vector2(-140, 700)
+
+[node name="OfferingArea" type="Area2D" parent="."]
+position = Vector2(0, -45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OfferingArea"]
+position = Vector2(592, 670)
+shape = SubResource("RectangleShape2D_24llh")
+
+[node name="FoodItems" type="Node2D" parent="."]
+position = Vector2(0, -45)
+
+[node name="Food" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(1313, 510)
+
+[node name="Food2" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(660, 980)
+
+[node name="Food3" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(1199, 572)
+
+[node name="Food13" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(1125, 616)
+
+[node name="Food4" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(1808, 270)
+
+[node name="Food5" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(2159, 270)
+
+[node name="Food9" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(2717, 6)
+
+[node name="Food10" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(2681, 7)
+
+[node name="Food11" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(2698, 7)
+
+[node name="Food8" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(2264, 421)
+
+[node name="Food12" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(2266, 486)
+
+[node name="Food6" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(1951, 425)
+
+[node name="Food7" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(124, 903)
+
+[node name="Dragon" parent="." instance=ExtResource("4_fd0ur")]
+position = Vector2(-868, 167)
+
+[connection signal="body_entered" from="OfferingArea" to="PlayerCharacter" method="_on_offering_area_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food2" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food3" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food13" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food4" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food5" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food9" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food10" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food11" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food8" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food12" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food6" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food7" to="PlayerCharacter" method="_on_food_body_entered"]

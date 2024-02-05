@@ -2,22 +2,21 @@ using Godot;
 using System;
 
 public partial class player : CharacterBody2D
-{ 
+{
+	public float MoveSpeed = 150.0f;
+	public float MoveAcceleration = 30.0f;
+	public float JumpVelocity = 400.0f;
+	public float Friction = 10f;
+	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	public float CurrentWeight = 20.0f;
+	public float FoodItems = 0.0f;
+
 	private Dragon Dragon;
 	private bool Entered;
 	private AnimationPlayer AnimationPlayer;
 	private Sprite2D Character;
-	
-	public float MoveSpeed = 80.0f;
-	public float MoveAcceleration = 10.0f;
-	public float JumpVelocity = 600.0f;
-	public float Friction = 10f;
-	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	public const float DefaultWeight = 25.0f;
-	public float CurrentWeight = 15.0f;
-	public int FoodItems = 0;
 
-	public override void _Ready()
+public override void _Ready()
 	{
 		this.Dragon = (Dragon)this.GetParent().FindChild("Dragon");
 		this.Entered = false;
@@ -36,16 +35,16 @@ public partial class player : CharacterBody2D
 		// Handle jump
 		if (Input.IsKeyPressed(Key.Space) && IsOnFloor())
 		{
-			velocity.Y = -JumpVelocity + CurrentWeight * 10;
+			velocity.Y = -JumpVelocity + CurrentWeight * 3;
 		}
 
 		// Apply gravity
 		if (!IsOnFloor())
 		{
-			velocity.Y += (Gravity + DefaultWeight) * (float)delta;
+			velocity.Y += (Gravity + CurrentWeight*2) * (float)delta;
 		}
 		// Horizontal movement
-		else if (Input.IsKeyPressed(Key.Left) || Input.IsKeyPressed(Key.A))
+		 if (Input.IsKeyPressed(Key.Left) || Input.IsKeyPressed(Key.A))
 		{
 			this.Character.FlipH = true;
 			this.Character.Position = new Vector2(-15, 2);
@@ -81,7 +80,7 @@ public partial class player : CharacterBody2D
 		{
 			if (this.FoodItems == 0 || !this.Dragon.Extended) {return;}
 			Console.WriteLine("Weight - " + FoodItems);
-			CurrentWeight -= FoodItems;
+			CurrentWeight -= FoodItems * 3f;
 			this.Dragon.Expand(1.1f*FoodItems);
 			FoodItems = 0;
 		}
@@ -92,6 +91,8 @@ public partial class player : CharacterBody2D
 		if (body.Name.Equals("PlayerCharacter"))
 		{
 			this.Entered = true;
+			//CurrentWeight -= FoodItems * 2.5;
+			//FoodItems = 0;
 		}
 	}
 
@@ -106,9 +107,9 @@ public partial class player : CharacterBody2D
 	private void _on_food_body_entered(Node2D body)
 	{		
 		if (body.Name != "PlayerCharacter") return;
-		CurrentWeight += 1;
+		CurrentWeight += 3f;
 		FoodItems += 1;
-		Console.WriteLine("Weight is Now " + FoodItems);
+		Console.WriteLine("Weight is Now " + CurrentWeight);
 	}
 	
 }
