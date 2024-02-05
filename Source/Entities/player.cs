@@ -119,7 +119,7 @@ public partial class player : CharacterBody2D
 			}
 
 			Console.WriteLine("Weight - " + FoodItems);
-			this.Dragon.Expand(1.1f * FoodItems);
+			this.Dragon.Expand(1.001f * FoodItems);
 			FoodItems = 0;
 		}
 	}

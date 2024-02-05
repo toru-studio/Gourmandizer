@@ -42,6 +42,7 @@ public partial class DragonBody : Node2D
 
 	public void Expand(float amount)
 	{
+		amount = 1f + (amount - 1f)/4f;
 		float minHeight = float.MaxValue;
 		float maxHeight = float.MinValue;
 
