@@ -39,22 +39,22 @@ position = Vector2(1095, 592)
 position = Vector2(1770, 230)
 
 [node name="Food5" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2159, 270)
+position = Vector2(2139, 230)
 
 [node name="Food9" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2717, 6)
+position = Vector2(1909, 231)
 
 [node name="Food10" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2681, 7)
+position = Vector2(2685, -36)
 
 [node name="Food11" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2698, 7)
+position = Vector2(2450, 443)
 
 [node name="Food8" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2264, 421)
+position = Vector2(2238, 374)
 
 [node name="Food12" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2266, 486)
+position = Vector2(2234, 441)
 
 [node name="Food6" parent="FoodItems" instance=ExtResource("4_h0qnc")]
 position = Vector2(1927, 382)
@@ -63,10 +63,10 @@ position = Vector2(1927, 382)
 position = Vector2(95, 859)
 
 [node name="Dragon" parent="." instance=ExtResource("4_p7bmn")]
-position = Vector2(1334, -342)
+position = Vector2(-932, 165)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(2731, -56)
+position = Vector2(465, 451)
 stream = ExtResource("4_hsjit")
 volume_db = -12.0
 autoplay = true
