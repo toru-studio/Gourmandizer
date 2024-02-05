@@ -15,8 +15,10 @@ public partial class player : CharacterBody2D
 	private bool Entered;
 	private AnimationPlayer AnimationPlayer;
 	private Sprite2D Character;
+	
 	private AudioStreamPlayer2D CaveSteps;
 	private AudioStreamPlayer2D Steps;
+	private AudioStreamPlayer2D FlowerSound;
 
 public override void _Ready()
 	{
@@ -26,6 +28,7 @@ public override void _Ready()
 		this.Character = this.GetNode<Sprite2D>("Character");
 		this.CaveSteps = this.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
 		this.Steps = this.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D2");
+		this.FlowerSound = this.GetNode<AudioStreamPlayer2D>("FlowerPickup");
 		GD.Print("Player Dragon Instance ID: ", this.Dragon.GetInstanceId());
 		GD.Print("Player Dragon Hash Code: ", this.Dragon.GetHashCode());
 	}
@@ -114,6 +117,7 @@ public override void _Ready()
 	private void _on_food_body_entered(Node2D body)
 	{		
 		if (body.Name != "PlayerCharacter") return;
+		this.FlowerSound.Play();
 		CurrentWeight += 3f;
 		FoodItems += 1;
 		Console.WriteLine("Weight is Now " + CurrentWeight);
