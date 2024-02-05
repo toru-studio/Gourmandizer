@@ -19,6 +19,8 @@ public partial class Dragon : Node2D
 	
 	private DragonBody DragonBody;
 
+	private AudioStreamPlayer2D AudioStreamPlayer2D;
+
 	private Array<Node> Links;
 	
 	private double extendAlapsed;
@@ -41,6 +43,7 @@ public partial class Dragon : Node2D
 		this.RootNeckPos = this.DragonNeck.GlobalPosition;
 		this.RootDragonPos = this.DragonBody.GlobalPosition;
 		this.Links = this.GetNode<Node2D>("Links").GetChildren();
+		this.AudioStreamPlayer2D = this.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
 
 		((PinJoint2D)this.Links[0]).NodeA = this.DragonNeck.GetChild<RigidBody2D>(0).GetPath();
 		((PinJoint2D)this.Links[0]).NodeB = this.DragonBody.GetNode<RigidBody2D>("RigidBody2D5").GetPath();
@@ -102,6 +105,10 @@ public partial class Dragon : Node2D
 
 	private void ExtendNeck()
 	{
+		if (!this.AudioStreamPlayer2D.Playing)
+		{
+			this.AudioStreamPlayer2D.Play();
+		}
 		if (this.DragonNeck.GlobalPosition.DistanceTo(this.Player.GlobalPosition) < 100f)
 		{
 			this.extended = true;
@@ -117,6 +124,10 @@ public partial class Dragon : Node2D
 
 	private void RetractNeck()
 	{
+		if (this.AudioStreamPlayer2D.Playing)
+		{
+			this.AudioStreamPlayer2D.Stop();
+		}
 		if (this.Extended)
 		{
 			this.extended = false;

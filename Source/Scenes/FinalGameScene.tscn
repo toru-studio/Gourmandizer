@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://r1d7tabjg7pr"]
+[gd_scene load_steps=7 format=3 uid="uid://r1d7tabjg7pr"]
 
 [ext_resource type="PackedScene" uid="uid://bnrujfg567ps3" path="res://Source/Maps/Final Level.tscn" id="1_xrbnm"]
 [ext_resource type="PackedScene" uid="uid://b74fqfnjgutr6" path="res://Source/Entities/player_character.tscn" id="2_ohbx3"]
 [ext_resource type="PackedScene" uid="uid://byo2uyqjd05b0" path="res://Source/Item/Food.tscn" id="4_h0qnc"]
 [ext_resource type="AudioStream" uid="uid://tvs4ooseqnsh" path="res://Assets/Sounds/demonic.wav" id="4_hsjit"]
+[ext_resource type="PackedScene" uid="uid://dw14morlkyag4" path="res://Source/Entities/dragon.tscn" id="4_p7bmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24llh"]
 size = Vector2(158.75, 95.25)
@@ -14,7 +15,7 @@ size = Vector2(158.75, 95.25)
 position = Vector2(-27, 0)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_ohbx3")]
-position = Vector2(508, 934)
+position = Vector2(2261, 120)
 
 [node name="OfferingArea" type="Area2D" parent="."]
 position = Vector2(0, -45)
@@ -52,6 +53,9 @@ position = Vector2(1951, 425)
 
 [node name="Food7" parent="FoodItems" instance=ExtResource("4_h0qnc")]
 position = Vector2(124, 903)
+
+[node name="Dragon" parent="." instance=ExtResource("4_p7bmn")]
+position = Vector2(1334, -342)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(2731, -56)
