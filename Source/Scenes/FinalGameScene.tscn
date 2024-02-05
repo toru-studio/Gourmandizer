@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://g7e77w4r710v"]
+[gd_scene load_steps=17 format=3 uid="uid://r1d7tabjg7pr"]
 
 [ext_resource type="PackedScene" uid="uid://bx44brn7tu07n" path="res://Source/Maps/Final Level.tscn" id="1_xrbnm"]
 [ext_resource type="Script" path="res://Source/Game.cs" id="1_yt4ci"]
 [ext_resource type="PackedScene" uid="uid://b74fqfnjgutr6" path="res://Source/Entities/player_character.tscn" id="2_ohbx3"]
 [ext_resource type="PackedScene" uid="uid://byo2uyqjd05b0" path="res://Source/Item/Food.tscn" id="4_h0qnc"]
-[ext_resource type="AudioStream" path="res://Assets/Sounds/demonic.wav" id="4_hsjit"]
+[ext_resource type="AudioStream" uid="uid://tvs4ooseqnsh" path="res://Assets/Sounds/demonic.wav" id="4_hsjit"]
 [ext_resource type="PackedScene" uid="uid://dw14morlkyag4" path="res://Source/Entities/dragon.tscn" id="4_p7bmn"]
 [ext_resource type="Shader" path="res://Source/Shaders/dragon_body.gdshader" id="7_ohtj4"]
 [ext_resource type="Texture2D" uid="uid://by2ks0gldw8ay" path="res://Assets/Images/Dragon/Sausage.jpg" id="8_cywdq"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://ml5sckrr32as"]
+
+[ext_resource type="Script" path="res://Source/Scenes/MainMenu.gd" id="1_yqg62"]
+[ext_resource type="Shader" path="res://Source/Shaders/dragon_body_colour.gdshader" id="2_h8xix"]
+[ext_resource type="Texture2D" uid="uid://by2ks0gldw8ay" path="res://Assets/Images/Dragon/Sausage.jpg" id="3_xuqks"]
+[ext_resource type="Texture2D" uid="uid://bgut7cvkyrgyb" path="res://Assets/Images/Credits/Gourmandizer.png" id="4_jcaph"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8mbuh"]
+shader = ExtResource("2_h8xix")
+shader_parameter/motion = Vector2(100, 100)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8v2y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jxrtq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rm5uj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_woqeg"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqg62")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_8mbuh")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_xuqks")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 626.0
+offset_right = 1105.0
+offset_bottom = 780.0
+theme_override_font_sizes/font_size = 106
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p8v2y")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jxrtq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rm5uj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_woqeg")
+text = "Play"
+
+[node name="Gourmandizer" type="Sprite2D" parent="."]
+position = Vector2(960, 656)
+texture = ExtResource("4_jcaph")
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
