@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b74fqfnjgutr6"]
+[gd_scene load_steps=14 format=3 uid="uid://b74fqfnjgutr6"]
 
 [ext_resource type="Script" path="res://Source/Entities/player.cs" id="1_h5ae2"]
 [ext_resource type="Texture2D" uid="uid://bbuefercct2xg" path="res://Assets/Images/Player/Player.png" id="2_8bbsw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bhf71tv1urtv1" path="res://Assets/Images/Player/Thistle.png" id="4_ymcf7"]
 [ext_resource type="Texture2D" uid="uid://dl6ylw7j40dl1" path="res://Assets/Images/Player/Arms.png" id="5_lx7uh"]
 [ext_resource type="AudioStream" uid="uid://clg54j77iesda" path="res://Assets/Sounds/Steps.wav" id="6_c3m3n"]
+[ext_resource type="AudioStream" uid="uid://bp2ehn1ebsm5f" path="res://Assets/Sounds/Voice 002.wav" id="7_yld15"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tm680"]
 radius = 12.0
@@ -233,3 +234,8 @@ node_b = NodePath("../RigidBody2D")
 position = Vector2(-4, 12)
 stream = ExtResource("6_c3m3n")
 bus = &"Walking"
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-4, 12)
+stream = ExtResource("7_yld15")
+volume_db = -3.816

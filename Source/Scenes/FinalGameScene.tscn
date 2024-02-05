@@ -15,7 +15,7 @@ size = Vector2(158.75, 95.25)
 position = Vector2(-27, 0)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_ohbx3")]
-position = Vector2(2261, 120)
+position = Vector2(156, 931)
 
 [node name="OfferingArea" type="Area2D" parent="."]
 position = Vector2(0, -45)

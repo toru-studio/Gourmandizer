@@ -15,7 +15,8 @@ public partial class player : CharacterBody2D
 	private bool Entered;
 	private AnimationPlayer AnimationPlayer;
 	private Sprite2D Character;
-	private AudioStreamPlayer2D AudioStreamPlayer2D;
+	private AudioStreamPlayer2D CaveSteps;
+	private AudioStreamPlayer2D Steps;
 
 public override void _Ready()
 	{
@@ -23,7 +24,8 @@ public override void _Ready()
 		this.Entered = false;
 		this.AnimationPlayer = this.GetNode<AnimationPlayer>("AnimationPlayer");
 		this.Character = this.GetNode<Sprite2D>("Character");
-		this.AudioStreamPlayer2D = this.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
+		this.CaveSteps = this.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
+		this.Steps = this.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D2");
 		GD.Print("Player Dragon Instance ID: ", this.Dragon.GetInstanceId());
 		GD.Print("Player Dragon Hash Code: ", this.Dragon.GetHashCode());
 	}
@@ -48,10 +50,7 @@ public override void _Ready()
 		// Horizontal movement
 		else if (Input.IsKeyPressed(Key.Left) || Input.IsKeyPressed(Key.A))
 		{
-			if (!this.AudioStreamPlayer2D.Playing)
-			{
-				this.AudioStreamPlayer2D.Play();
-			}
+			this.playFootSteps();
 			this.Character.FlipH = true;
 			this.Character.Position = new Vector2(-15, 2);
 			AnimationPlayer.Play("walk_cycle");
@@ -59,10 +58,7 @@ public override void _Ready()
 		}
 		else if (Input.IsKeyPressed(Key.Right) || Input.IsKeyPressed(Key.D))
 		{
-			if (!this.AudioStreamPlayer2D.Playing)
-			{
-				this.AudioStreamPlayer2D.Play();
-			}
+			this.playFootSteps();
 			this.Character.FlipH = false;
 			this.Character.Position = new Vector2(-10, 2);
 			AnimationPlayer.Play("walk_cycle");
@@ -70,10 +66,7 @@ public override void _Ready()
 		}
 		else
 		{
-			if (this.AudioStreamPlayer2D.Playing)
-			{
-				this.AudioStreamPlayer2D.Stop();
-			}
+			this.stopFootSteps();
 			this.Character.FlipH = false;
 			this.Character.Position = new Vector2(-10, 2);
 			AnimationPlayer.Play("idle");
@@ -124,6 +117,47 @@ public override void _Ready()
 		CurrentWeight += 1;
 		FoodItems += 1;
 		Console.WriteLine("Weight is Now " + CurrentWeight);
+	}
+
+	private void playFootSteps()
+	{
+		if (this.GlobalPosition.Y < 680)
+		{
+			if (this.CaveSteps.Playing)
+			{
+				this.CaveSteps.Stop();
+			}
+
+			if (!this.Steps.Playing)
+			{
+				this.Steps.Play();
+			}
+		}
+		else
+		{
+			if (this.Steps.Playing)
+			{
+				this.Steps.Stop();
+			}
+
+			if (!this.CaveSteps.Playing)
+			{
+				this.CaveSteps.Play();
+			}
+		}
+	}
+
+	private void stopFootSteps()
+	{
+		if (this.CaveSteps.Playing)
+		{
+			this.CaveSteps.Stop();
+		}
+
+		if (this.Steps.Playing)
+		{
+			this.Steps.Stop();
+		}
 	}
 	
 }
