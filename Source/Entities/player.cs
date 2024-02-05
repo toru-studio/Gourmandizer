@@ -61,12 +61,11 @@ public partial class player : CharacterBody2D
 			if (FoodItems > 0 && !DropPressed)
 			{
 				DropPressed = true;
-				Console.WriteLine("Drop Code");
 				var food = GD.Load<PackedScene>("res://Source/Item/Food.tscn");
 				var droppedFood = (Food)food.Instantiate();
 				FoodItems -= 1;
 				droppedFood.Name = "Food";
-				droppedFood.Position = new Vector2(this.Position.X - 30, this.Position.Y);
+				droppedFood.Position = new Vector2(this.Position.X - 25, this.Position.Y);
 				GetParent().GetNode("FoodItems").AddChild(droppedFood);
 			}
 		}
@@ -118,7 +117,6 @@ public partial class player : CharacterBody2D
 				return;
 			}
 
-			Console.WriteLine("Weight - " + FoodItems);
 			FoodItems = 0;
 		}
 	}
