@@ -59,7 +59,7 @@ public partial class Game : Node
 		foreach (Node node in this.GetChildren())
 		{
 			if (!node.Name.Equals("Credits") && !node.Name.Equals("GameOverAudio") 
-			    && !node.Name.Equals("EatenAudio"))
+				&& !node.Name.Equals("EatenAudio"))
 			{
 				node.QueueFree();
 			}
