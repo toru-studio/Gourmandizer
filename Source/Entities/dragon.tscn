@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw14morlkyag4"]
+[gd_scene load_steps=6 format=3 uid="uid://dw14morlkyag4"]
 
 [ext_resource type="Script" path="res://Source/Entities/Dragon.cs" id="1_6a2ec"]
 [ext_resource type="PackedScene" uid="uid://j2y552wct7ai" path="res://Source/Entities/dragon_body.tscn" id="2_qqsdk"]
 [ext_resource type="PackedScene" uid="uid://bmymkpd708grm" path="res://Source/Entities/dragon_neck.tscn" id="3_fauhx"]
 [ext_resource type="PackedScene" uid="uid://fnq5y6bvyalx" path="res://Source/Entities/dragon_head.tscn" id="4_e4l5y"]
+[ext_resource type="AudioStream" uid="uid://cp5wsabqtdvcr" path="res://Assets/Sounds/Dragon.wav" id="5_l1s2s"]
 
 [node name="Dragon" type="Node2D"]
 position = Vector2(-1532, -483)
@@ -28,3 +29,9 @@ position = Vector2(1480, 428)
 
 [node name="PinJoint2D4" type="PinJoint2D" parent="Links"]
 position = Vector2(1472, 444)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1531, 476)
+stream = ExtResource("5_l1s2s")
+volume_db = 2.828
+max_distance = 1665.0
