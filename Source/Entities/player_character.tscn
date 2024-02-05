@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b74fqfnjgutr6"]
+[gd_scene load_steps=16 format=3 uid="uid://b74fqfnjgutr6"]
 
 [ext_resource type="Script" path="res://Source/Entities/player.cs" id="1_h5ae2"]
 [ext_resource type="Texture2D" uid="uid://bbuefercct2xg" path="res://Assets/Images/Player/Player.png" id="2_8bbsw"]
@@ -10,8 +10,10 @@
 [ext_resource type="AudioStream" path="res://Assets/Sounds/Coin.wav" id="8_waegd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tm680"]
-radius = 12.0
 height = 56.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iubw0"]
+radius = 34.0588
 
 [sub_resource type="Animation" id="Animation_8sp0v"]
 length = 0.001
@@ -203,8 +205,8 @@ shape = SubResource("CapsuleShape2D_tm680")
 [node name="Pickup" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup"]
-position = Vector2(0, 6)
-shape = SubResource("CapsuleShape2D_tm680")
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_iubw0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

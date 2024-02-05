@@ -75,8 +75,7 @@ public partial class Dragon : Node2D
 
 	public void Expand(float amount)
 	{
-		GD.Print("TEST");
-		this.RootNeckPos = new Vector2(this.RootNeckPos.X, this.RootNeckPos.Y - this.RootNeckPos.Y * 0.1f);
+		this.RootNeckPos = new Vector2(this.RootNeckPos.X, this.RootNeckPos.Y - this.RootNeckPos.Y * 0.2f);
 
 		foreach (Node2D child in this.DragonHead.GetChild<RigidBody2D>(0).GetChildren())
 		{
@@ -89,12 +88,6 @@ public partial class Dragon : Node2D
 			}
 		}
 		this.DragonNeck.Scale *= amount;
-
-		foreach (PinJoint2D pinJoint2D in this.Links)
-		{
-			pinJoint2D.Scale *= amount;
-			pinJoint2D.GlobalPosition = new Vector2(pinJoint2D.GlobalPosition.X, pinJoint2D.GlobalPosition.Y - pinJoint2D.GlobalPosition.Y * 0.1f);
-		}
 	}
 	
 	private void TrackPlayer()

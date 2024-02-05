@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://g7e77w4r710v"]
+[gd_scene load_steps=17 format=3 uid="uid://r1d7tabjg7pr"]
 
 [ext_resource type="PackedScene" uid="uid://bx44brn7tu07n" path="res://Source/Maps/Final Level.tscn" id="1_xrbnm"]
 [ext_resource type="Script" path="res://Source/Game.cs" id="1_yt4ci"]
 [ext_resource type="PackedScene" uid="uid://b74fqfnjgutr6" path="res://Source/Entities/player_character.tscn" id="2_ohbx3"]
 [ext_resource type="PackedScene" uid="uid://byo2uyqjd05b0" path="res://Source/Item/Food.tscn" id="4_h0qnc"]
-[ext_resource type="AudioStream" path="res://Assets/Sounds/demonic.wav" id="4_hsjit"]
+[ext_resource type="AudioStream" uid="uid://tvs4ooseqnsh" path="res://Assets/Sounds/demonic.wav" id="4_hsjit"]
 [ext_resource type="PackedScene" uid="uid://dw14morlkyag4" path="res://Source/Entities/dragon.tscn" id="4_p7bmn"]
 [ext_resource type="Shader" path="res://Source/Shaders/dragon_body.gdshader" id="7_ohtj4"]
 [ext_resource type="Texture2D" uid="uid://by2ks0gldw8ay" path="res://Assets/Images/Dragon/Sausage.jpg" id="8_cywdq"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bgut7cvkyrgyb" path="res://Assets/Images/Credits/Gourmandizer.png" id="11_j8obl"]
 [ext_resource type="Texture2D" uid="uid://cuyqexu125nmx" path="res://Assets/Images/Credits/NathanAndFinlay.png" id="12_o8gsn"]
 [ext_resource type="Texture2D" uid="uid://du7bi8sv7hlqh" path="res://Assets/Images/Credits/SpecialCredits.png" id="13_0jxao"]
+[ext_resource type="Texture2D" uid="uid://gb2uudl7biuw" path="res://Assets/Images/Controls/Controls.png" id="14_jixy6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24llh"]
 size = Vector2(449.375, 130.625)
@@ -30,7 +31,7 @@ script = ExtResource("1_yt4ci")
 position = Vector2(-27, 0)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_ohbx3")]
-position = Vector2(792, 658)
+position = Vector2(997, 666)
 
 [node name="OfferingArea" type="Area2D" parent="."]
 position = Vector2(0, -45)
@@ -47,11 +48,8 @@ position = Vector2(1290, 475)
 [node name="Food3" parent="FoodItems" instance=ExtResource("4_h0qnc")]
 position = Vector2(1174, 530)
 
-[node name="Food16" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(681, 681)
-
 [node name="Food13" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(1091, 592)
+position = Vector2(1098, 596)
 
 [node name="Food4" parent="FoodItems" instance=ExtResource("4_h0qnc")]
 position = Vector2(1770, 230)
@@ -100,13 +98,11 @@ position = Vector2(0, -700)
 
 [node name="GameOverAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ipvxs")
-bus = &"Voices"
 
 [node name="EatenAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_p2tqx")
 volume_db = -15.266
 mix_target = 2
-bus = &"Voices"
 
 [node name="Credits" type="Node2D" parent="."]
 
@@ -133,10 +129,16 @@ visible = false
 position = Vector2(932, 531)
 texture = ExtResource("13_0jxao")
 
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(948, 599)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
+scale = Vector2(0.298701, 0.298701)
+texture = ExtResource("14_jixy6")
+
 [connection signal="body_entered" from="OfferingArea" to="PlayerCharacter" method="_on_offering_area_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food3" to="PlayerCharacter" method="_on_food_body_entered"]
-[connection signal="body_entered" from="FoodItems/Food16" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food13" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food4" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food5" to="PlayerCharacter" method="_on_food_body_entered"]
