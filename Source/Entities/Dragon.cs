@@ -142,5 +142,15 @@ public partial class Dragon : Node2D
 			}
 		}
 	}
-	
+
+	public void EatPlayer(Func<bool> func, double delta)
+	{
+		this.DragonHead.GetChild<RigidBody2D>(0).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+		this.DragonNeck.GlobalPosition += (this.Player.GlobalPosition - this.DragonNeck.GlobalPosition).Normalized()*(float)delta*400;
+		if (this.DragonNeck.GlobalPosition.DistanceTo(this.Player.GlobalPosition) < 50f)
+		{
+			func();
+		}
+	}
+
 }
