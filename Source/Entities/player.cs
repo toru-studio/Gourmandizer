@@ -10,7 +10,7 @@ public partial class player : CharacterBody2D
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public float CurrentWeight;
 	private const float DefaultWeight = 10.0f;
-	public float FoodItems = 0.0f;
+	public float FoodItems = 10.0f;
 	private Dragon Dragon;
 	private bool Entered;
 	private AnimationPlayer AnimationPlayer;
@@ -119,7 +119,6 @@ public partial class player : CharacterBody2D
 			}
 
 			Console.WriteLine("Weight - " + FoodItems);
-			this.Dragon.Expand(1.001f * FoodItems);
 			FoodItems = 0;
 		}
 	}

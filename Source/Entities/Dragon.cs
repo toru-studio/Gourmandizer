@@ -75,8 +75,19 @@ public partial class Dragon : Node2D
 
 	public void Expand(float amount)
 	{
-		this.RootNeckPos = new Vector2(this.RootNeckPos.X, this.RootNeckPos.Y - this.RootNeckPos.Y * 0.2f * amount);
-		this.DragonBody.Expand(amount);
+		this.RootNeckPos = new Vector2(this.RootNeckPos.X, this.RootNeckPos.Y - this.RootNeckPos.Y * 0.2f);
+
+		foreach (Node2D child in this.DragonHead.GetChild<RigidBody2D>(0).GetChildren())
+		{
+			child.Scale *= amount;
+			
+			// Adjusting for terrible polygon placement B)
+			if (child.Name.Equals("Polygon2D"))
+			{
+				child.Position *= amount;
+			}
+		}
+		this.DragonNeck.Scale *= amount;
 	}
 	
 	private void TrackPlayer()
