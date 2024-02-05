@@ -15,7 +15,7 @@ public partial class player : CharacterBody2D
 	private bool Entered;
 	private AnimationPlayer AnimationPlayer;
 	private Sprite2D Character;
-
+	
 	private AudioStreamPlayer2D CaveSteps;
 	private AudioStreamPlayer2D Steps;
 	public AudioStreamPlayer2D FlowerSound;
@@ -65,7 +65,6 @@ public partial class player : CharacterBody2D
 				droppedFood.Position = new Vector2(this.Position.X - 30, this.Position.Y);
 				GetParent().GetNode("FoodItems").AddChild(droppedFood);
 			}
-
 		}
 
 		// Horizontal movement

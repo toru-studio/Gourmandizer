@@ -23,7 +23,6 @@ public partial class Food : Area2D
 			if (body.Name != "PlayerCharacter") return;
 			Player.FlowerSound.Play();
 			Player.FoodItems += 1;
-			Console.WriteLine("Weight is Now " + Player.CurrentWeight + 1);
 			QueueFree();
 		}
 	}
