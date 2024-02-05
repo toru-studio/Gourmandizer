@@ -8,9 +8,9 @@ public partial class player : CharacterBody2D
 	public float JumpVelocity = 400.0f;
 	public float Friction = 10f;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	public float CurrentWeight = 20.0f;
+	public float CurrentWeight;
+	private const float DefaultWeight = 10.0f;
 	public float FoodItems = 0.0f;
-
 	private Dragon Dragon;
 	private bool Entered;
 	private AnimationPlayer AnimationPlayer;
@@ -18,9 +18,9 @@ public partial class player : CharacterBody2D
 	
 	private AudioStreamPlayer2D CaveSteps;
 	private AudioStreamPlayer2D Steps;
-	private AudioStreamPlayer2D FlowerSound;
+	public AudioStreamPlayer2D FlowerSound;
 
-public override void _Ready()
+	public override void _Ready()
 	{
 		this.Dragon = (Dragon)this.GetParent().FindChild("Dragon");
 		this.Entered = false;
@@ -35,12 +35,13 @@ public override void _Ready()
 
 	public override void _PhysicsProcess(double delta)
 	{
+		
 		var velocity = Velocity;
-
+		CurrentWeight = DefaultWeight + (FoodItems * 3);
 		var moveSpeedMax = MoveSpeed - (CurrentWeight * 2); // Change with CurrentWeight
 
 		// Handle jump
-		if (Input.IsKeyPressed(Key.Space) && IsOnFloor())
+		if ((Input.IsKeyPressed(Key.Space) || Input.IsKeyPressed(Key.W) || Input.IsKeyPressed(Key.Up)) && IsOnFloor())
 		{
 			velocity.Y = -JumpVelocity + CurrentWeight * 3;
 		}
@@ -48,10 +49,26 @@ public override void _Ready()
 		// Apply gravity
 		if (!IsOnFloor())
 		{
-			velocity.Y += (Gravity + CurrentWeight*2) * (float)delta;
+			velocity.Y += (Gravity + CurrentWeight * 2) * (float)delta;
 		}
+
+		//Do Drop
+		if (Input.IsKeyPressed(Key.S) || Input.IsKeyPressed(Key.Down))
+		{
+			if (FoodItems > 0)
+			{
+				Console.WriteLine("Drop Code");
+				var food = GD.Load<PackedScene>("res://Source/Item/Food.tscn");
+				var droppedFood = (Food)food.Instantiate();
+				FoodItems -= 1;
+				droppedFood.Name = "Food";
+				droppedFood.Position = new Vector2(this.Position.X - 30, this.Position.Y);
+				GetParent().GetNode("FoodItems").AddChild(droppedFood);
+			}
+		}
+
 		// Horizontal movement
-		 if (Input.IsKeyPressed(Key.Left) || Input.IsKeyPressed(Key.A))
+		if (Input.IsKeyPressed(Key.Left) || Input.IsKeyPressed(Key.A))
 		{
 			this.playFootSteps();
 			this.Character.FlipH = true;
@@ -88,10 +105,13 @@ public override void _Ready()
 	{
 		if (this.Entered)
 		{
-			if (this.FoodItems == 0 || !this.Dragon.Extended) {return;}
+			if (this.FoodItems == 0 || !this.Dragon.Extended)
+			{
+				return;
+			}
+
 			Console.WriteLine("Weight - " + FoodItems);
-			CurrentWeight -= FoodItems * 3f;
-			this.Dragon.Expand(1.1f*FoodItems);
+			this.Dragon.Expand(1.1f * FoodItems);
 			FoodItems = 0;
 		}
 	}
@@ -101,8 +121,6 @@ public override void _Ready()
 		if (body.Name.Equals("PlayerCharacter"))
 		{
 			this.Entered = true;
-			//CurrentWeight -= FoodItems * 2.5;
-			//FoodItems = 0;
 		}
 	}
 
@@ -112,15 +130,6 @@ public override void _Ready()
 		{
 			this.Entered = false;
 		}
-	}
-
-	private void _on_food_body_entered(Node2D body)
-	{		
-		if (body.Name != "PlayerCharacter") return;
-		this.FlowerSound.Play();
-		CurrentWeight += 3f;
-		FoodItems += 1;
-		Console.WriteLine("Weight is Now " + CurrentWeight);
 	}
 
 	private void playFootSteps()
@@ -139,6 +148,7 @@ public override void _Ready()
 
 			return;
 		}
+
 		if (this.GlobalPosition.Y < 680)
 		{
 			if (this.CaveSteps.Playing)
@@ -177,5 +187,4 @@ public override void _Ready()
 			this.Steps.Stop();
 		}
 	}
-	
 }

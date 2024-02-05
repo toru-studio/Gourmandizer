@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://r1d7tabjg7pr"]
+[gd_scene load_steps=7 format=3 uid="uid://g7e77w4r710v"]
 
 [ext_resource type="PackedScene" uid="uid://bx44brn7tu07n" path="res://Source/Maps/Final Level.tscn" id="1_xrbnm"]
 [ext_resource type="Script" path="res://Source/Game.cs" id="1_yt4ci"]
 [ext_resource type="PackedScene" uid="uid://b74fqfnjgutr6" path="res://Source/Entities/player_character.tscn" id="2_ohbx3"]
 [ext_resource type="PackedScene" uid="uid://byo2uyqjd05b0" path="res://Source/Item/Food.tscn" id="4_h0qnc"]
-[ext_resource type="AudioStream" uid="uid://tvs4ooseqnsh" path="res://Assets/Sounds/demonic.wav" id="4_hsjit"]
+[ext_resource type="AudioStream" path="res://Assets/Sounds/demonic.wav" id="4_hsjit"]
 [ext_resource type="PackedScene" uid="uid://dw14morlkyag4" path="res://Source/Entities/dragon.tscn" id="4_p7bmn"]
 [ext_resource type="Shader" path="res://Source/Shaders/dragon_body.gdshader" id="7_ohtj4"]
 [ext_resource type="Texture2D" uid="uid://by2ks0gldw8ay" path="res://Assets/Images/Dragon/Sausage.jpg" id="8_cywdq"]
@@ -30,68 +30,73 @@ script = ExtResource("1_yt4ci")
 position = Vector2(-27, 0)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_ohbx3")]
-position = Vector2(1905, 354)
+position = Vector2(792, 658)
 
 [node name="OfferingArea" type="Area2D" parent="."]
 position = Vector2(0, -45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OfferingArea"]
-position = Vector2(592, 670)
+position = Vector2(328, 667)
 shape = SubResource("RectangleShape2D_24llh")
 
 [node name="FoodItems" type="Node2D" parent="."]
-position = Vector2(0, -45)
 
 [node name="Food" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(1313, 510)
-
-[node name="Food2" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(660, 980)
+position = Vector2(1290, 475)
 
 [node name="Food3" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(1199, 572)
+position = Vector2(1174, 530)
+
+[node name="Food16" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(681, 681)
 
 [node name="Food13" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(1125, 616)
+position = Vector2(1091, 592)
 
 [node name="Food4" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(1808, 270)
+position = Vector2(1770, 230)
 
 [node name="Food5" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2159, 270)
+position = Vector2(2139, 230)
 
 [node name="Food9" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2717, 6)
+position = Vector2(1909, 231)
 
 [node name="Food10" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2681, 7)
+position = Vector2(2664, -38)
+
+[node name="Food14" parent="FoodItems" instance=ExtResource("4_h0qnc")]
+position = Vector2(2691, -40)
 
 [node name="Food11" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2698, 7)
+position = Vector2(2450, 443)
 
 [node name="Food8" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2264, 421)
+position = Vector2(2238, 374)
 
 [node name="Food12" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(2266, 486)
+position = Vector2(2234, 441)
 
 [node name="Food6" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(1951, 425)
+position = Vector2(1927, 382)
 
 [node name="Food7" parent="FoodItems" instance=ExtResource("4_h0qnc")]
-position = Vector2(124, 903)
+position = Vector2(95, 859)
 
 [node name="Dragon" parent="." instance=ExtResource("4_p7bmn")]
-position = Vector2(1334, -342)
+position = Vector2(-1101, 162)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(2731, -56)
+position = Vector2(465, 451)
 stream = ExtResource("4_hsjit")
 volume_db = -12.0
 autoplay = true
 max_distance = 965.0
 attenuation = 1.6245
 panning_strength = 1.96
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -700)
 
 [node name="GameOverAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ipvxs")
@@ -130,13 +135,14 @@ texture = ExtResource("13_0jxao")
 
 [connection signal="body_entered" from="OfferingArea" to="PlayerCharacter" method="_on_offering_area_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food" to="PlayerCharacter" method="_on_food_body_entered"]
-[connection signal="body_entered" from="FoodItems/Food2" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food3" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food16" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food13" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food4" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food5" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food9" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food10" to="PlayerCharacter" method="_on_food_body_entered"]
+[connection signal="body_entered" from="FoodItems/Food14" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food11" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food8" to="PlayerCharacter" method="_on_food_body_entered"]
 [connection signal="body_entered" from="FoodItems/Food12" to="PlayerCharacter" method="_on_food_body_entered"]
