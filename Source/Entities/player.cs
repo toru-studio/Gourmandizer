@@ -121,6 +121,20 @@ public override void _Ready()
 
 	private void playFootSteps()
 	{
+		if (!IsOnFloor())
+		{
+			if (this.CaveSteps.Playing)
+			{
+				this.CaveSteps.Stop();
+			}
+
+			if (this.Steps.Playing)
+			{
+				this.Steps.Stop();
+			}
+
+			return;
+		}
 		if (this.GlobalPosition.Y < 680)
 		{
 			if (this.CaveSteps.Playing)
